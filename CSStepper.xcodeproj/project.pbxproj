@@ -1,0 +1,419 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C26562716D1E636006937C5 /* CSCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562416D1E636006937C5 /* CSCodeParser.m */; };
+		1C26562816D1E636006937C5 /* CSSnippet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562616D1E636006937C5 /* CSSnippet.m */; };
+		1C26562B16D1E81E006937C5 /* CSCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562A16D1E81E006937C5 /* CSCodeView.m */; };
+		1C26562E16D20892006937C5 /* CSBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562D16D20892006937C5 /* CSBlockView.m */; };
+		1C26563216D24899006937C5 /* UIColor+CSColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26563116D24899006937C5 /* UIColor+CSColor.m */; };
+		1C26563516D24C74006937C5 /* CSArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26563416D24C74006937C5 /* CSArrowView.m */; };
+		1C26563C16D26235006937C5 /* CSSelectionSortInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26563B16D26235006937C5 /* CSSelectionSortInterface.m */; };
+		1C6447BB16C7DA3000654781 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BA16C7DA3000654781 /* UIKit.framework */; };
+		1C6447BD16C7DA3000654781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BC16C7DA3000654781 /* Foundation.framework */; };
+		1C6447BF16C7DA3000654781 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BE16C7DA3000654781 /* CoreGraphics.framework */; };
+		1C6447C516C7DA3000654781 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1C6447C316C7DA3000654781 /* InfoPlist.strings */; };
+		1C6447C716C7DA3000654781 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447C616C7DA3000654781 /* main.m */; };
+		1C6447CB16C7DA3000654781 /* CSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447CA16C7DA3000654781 /* CSAppDelegate.m */; };
+		1C6447CD16C7DA3000654781 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C6447CC16C7DA3000654781 /* Default.png */; };
+		1C6447CF16C7DA3000654781 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C6447CE16C7DA3000654781 /* Default@2x.png */; };
+		1C6447D116C7DA3000654781 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C6447D016C7DA3000654781 /* Default-568h@2x.png */; };
+		1C6447DB16CA176B00654781 /* CSStepCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447DA16CA176B00654781 /* CSStepCenter.m */; };
+		1C6447DE16CA186D00654781 /* CSProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447DD16CA186D00654781 /* CSProgram.m */; };
+		1C6447E216CA2DD900654781 /* CSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447E116CA2DD900654781 /* CSInterface.m */; };
+		1C6447E416CA372800654781 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447E316CA372800654781 /* CoreText.framework */; };
+		1CDC7A7F16E1BA4000BFC269 /* CSStepperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */; };
+		1CDC7A8116E1BBD500BFC269 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDC7A8016E1BBD400BFC269 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C26562316D1E636006937C5 /* CSCodeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCodeParser.h; path = CSKit/ParseCore/CSCodeParser.h; sourceTree = "<group>"; };
+		1C26562416D1E636006937C5 /* CSCodeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCodeParser.m; path = CSKit/ParseCore/CSCodeParser.m; sourceTree = "<group>"; };
+		1C26562516D1E636006937C5 /* CSSnippet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSnippet.h; path = CSKit/ParseCore/CSSnippet.h; sourceTree = "<group>"; };
+		1C26562616D1E636006937C5 /* CSSnippet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSnippet.m; path = CSKit/ParseCore/CSSnippet.m; sourceTree = "<group>"; };
+		1C26562916D1E81E006937C5 /* CSCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCodeView.h; path = CSKit/CommonViews/CSCodeView.h; sourceTree = "<group>"; };
+		1C26562A16D1E81E006937C5 /* CSCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCodeView.m; path = CSKit/CommonViews/CSCodeView.m; sourceTree = "<group>"; };
+		1C26562C16D20892006937C5 /* CSBlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSBlockView.h; path = CSKit/CommonViews/CSBlockView.h; sourceTree = "<group>"; };
+		1C26562D16D20892006937C5 /* CSBlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSBlockView.m; path = CSKit/CommonViews/CSBlockView.m; sourceTree = "<group>"; };
+		1C26563016D24899006937C5 /* UIColor+CSColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+CSColor.h"; path = "CSKit/Categories/UIColor+CSColor.h"; sourceTree = "<group>"; };
+		1C26563116D24899006937C5 /* UIColor+CSColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CSColor.m"; path = "CSKit/Categories/UIColor+CSColor.m"; sourceTree = "<group>"; };
+		1C26563316D24C74006937C5 /* CSArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSArrowView.h; path = CSKit/CommonViews/CSArrowView.h; sourceTree = "<group>"; };
+		1C26563416D24C74006937C5 /* CSArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSArrowView.m; path = CSKit/CommonViews/CSArrowView.m; sourceTree = "<group>"; };
+		1C26563A16D26235006937C5 /* CSSelectionSortInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSelectionSortInterface.h; path = CSData/InsertionSort/CSSelectionSortInterface.h; sourceTree = "<group>"; };
+		1C26563B16D26235006937C5 /* CSSelectionSortInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSelectionSortInterface.m; path = CSData/InsertionSort/CSSelectionSortInterface.m; sourceTree = "<group>"; };
+		1C6447B716C7DA3000654781 /* CSStepper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSStepper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C6447BA16C7DA3000654781 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1C6447BC16C7DA3000654781 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1C6447BE16C7DA3000654781 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1C6447C216C7DA3000654781 /* CSStepper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CSStepper-Info.plist"; sourceTree = "<group>"; };
+		1C6447C416C7DA3000654781 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1C6447C616C7DA3000654781 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1C6447C816C7DA3000654781 /* CSStepper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CSStepper-Prefix.pch"; sourceTree = "<group>"; };
+		1C6447C916C7DA3000654781 /* CSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSAppDelegate.h; sourceTree = "<group>"; };
+		1C6447CA16C7DA3000654781 /* CSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSAppDelegate.m; sourceTree = "<group>"; };
+		1C6447CC16C7DA3000654781 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		1C6447CE16C7DA3000654781 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		1C6447D016C7DA3000654781 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1C6447D916CA176B00654781 /* CSStepCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStepCenter.h; path = CSKit/CSStepCenter.h; sourceTree = "<group>"; };
+		1C6447DA16CA176B00654781 /* CSStepCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStepCenter.m; path = CSKit/CSStepCenter.m; sourceTree = "<group>"; };
+		1C6447DC16CA186D00654781 /* CSProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSProgram.h; path = CSKit/CSProgram.h; sourceTree = "<group>"; };
+		1C6447DD16CA186D00654781 /* CSProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSProgram.m; path = CSKit/CSProgram.m; sourceTree = "<group>"; };
+		1C6447E016CA2DD900654781 /* CSInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSInterface.h; path = CSKit/CSInterface.h; sourceTree = "<group>"; };
+		1C6447E116CA2DD900654781 /* CSInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSInterface.m; path = CSKit/CSInterface.m; sourceTree = "<group>"; };
+		1C6447E316CA372800654781 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		1CDC7A7D16E1BA4000BFC269 /* CSStepperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStepperViewController.h; path = ViewController/CSStepperViewController.h; sourceTree = "<group>"; };
+		1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStepperViewController.m; path = ViewController/CSStepperViewController.m; sourceTree = "<group>"; };
+		1CDC7A8016E1BBD400BFC269 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C6447B416C7DA3000654781 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CDC7A8116E1BBD500BFC269 /* QuartzCore.framework in Frameworks */,
+				1C6447E416CA372800654781 /* CoreText.framework in Frameworks */,
+				1C6447BB16C7DA3000654781 /* UIKit.framework in Frameworks */,
+				1C6447BD16C7DA3000654781 /* Foundation.framework in Frameworks */,
+				1C6447BF16C7DA3000654781 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C26561C16D1E5D0006937C5 /* ParseCore */ = {
+			isa = PBXGroup;
+			children = (
+				1C26562316D1E636006937C5 /* CSCodeParser.h */,
+				1C26562416D1E636006937C5 /* CSCodeParser.m */,
+				1C26562516D1E636006937C5 /* CSSnippet.h */,
+				1C26562616D1E636006937C5 /* CSSnippet.m */,
+			);
+			name = ParseCore;
+			sourceTree = "<group>";
+		};
+		1C26562F16D2476A006937C5 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1C26563016D24899006937C5 /* UIColor+CSColor.h */,
+				1C26563116D24899006937C5 /* UIColor+CSColor.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		1C26563616D261F3006937C5 /* SelectionSort */ = {
+			isa = PBXGroup;
+			children = (
+				1C26563A16D26235006937C5 /* CSSelectionSortInterface.h */,
+				1C26563B16D26235006937C5 /* CSSelectionSortInterface.m */,
+			);
+			name = SelectionSort;
+			sourceTree = "<group>";
+		};
+		1C6447AE16C7DA2F00654781 = {
+			isa = PBXGroup;
+			children = (
+				1CDC7A7C16E1BA1000BFC269 /* ViewController */,
+				1C6447D816C880A900654781 /* CSData */,
+				1C6447D716C7DB6700654781 /* CSKit */,
+				1C6447C016C7DA3000654781 /* CSStepper */,
+				1C6447B916C7DA3000654781 /* Frameworks */,
+				1C6447B816C7DA3000654781 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1C6447B816C7DA3000654781 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C6447B716C7DA3000654781 /* CSStepper.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C6447B916C7DA3000654781 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1CDC7A8016E1BBD400BFC269 /* QuartzCore.framework */,
+				1C6447E316CA372800654781 /* CoreText.framework */,
+				1C6447BA16C7DA3000654781 /* UIKit.framework */,
+				1C6447BC16C7DA3000654781 /* Foundation.framework */,
+				1C6447BE16C7DA3000654781 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C6447C016C7DA3000654781 /* CSStepper */ = {
+			isa = PBXGroup;
+			children = (
+				1C6447C916C7DA3000654781 /* CSAppDelegate.h */,
+				1C6447CA16C7DA3000654781 /* CSAppDelegate.m */,
+				1C6447C116C7DA3000654781 /* Supporting Files */,
+			);
+			path = CSStepper;
+			sourceTree = "<group>";
+		};
+		1C6447C116C7DA3000654781 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1C6447C216C7DA3000654781 /* CSStepper-Info.plist */,
+				1C6447C316C7DA3000654781 /* InfoPlist.strings */,
+				1C6447C616C7DA3000654781 /* main.m */,
+				1C6447C816C7DA3000654781 /* CSStepper-Prefix.pch */,
+				1C6447CC16C7DA3000654781 /* Default.png */,
+				1C6447CE16C7DA3000654781 /* Default@2x.png */,
+				1C6447D016C7DA3000654781 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1C6447D716C7DB6700654781 /* CSKit */ = {
+			isa = PBXGroup;
+			children = (
+				1C26562F16D2476A006937C5 /* Categories */,
+				1C26561C16D1E5D0006937C5 /* ParseCore */,
+				1C6447DF16CA1CF000654781 /* CommonViews */,
+				1C6447D916CA176B00654781 /* CSStepCenter.h */,
+				1C6447DA16CA176B00654781 /* CSStepCenter.m */,
+				1C6447DC16CA186D00654781 /* CSProgram.h */,
+				1C6447DD16CA186D00654781 /* CSProgram.m */,
+				1C6447E016CA2DD900654781 /* CSInterface.h */,
+				1C6447E116CA2DD900654781 /* CSInterface.m */,
+			);
+			name = CSKit;
+			sourceTree = "<group>";
+		};
+		1C6447D816C880A900654781 /* CSData */ = {
+			isa = PBXGroup;
+			children = (
+				1C26563616D261F3006937C5 /* SelectionSort */,
+			);
+			name = CSData;
+			sourceTree = "<group>";
+		};
+		1C6447DF16CA1CF000654781 /* CommonViews */ = {
+			isa = PBXGroup;
+			children = (
+				1C26562916D1E81E006937C5 /* CSCodeView.h */,
+				1C26562A16D1E81E006937C5 /* CSCodeView.m */,
+				1C26562C16D20892006937C5 /* CSBlockView.h */,
+				1C26562D16D20892006937C5 /* CSBlockView.m */,
+				1C26563316D24C74006937C5 /* CSArrowView.h */,
+				1C26563416D24C74006937C5 /* CSArrowView.m */,
+			);
+			name = CommonViews;
+			sourceTree = "<group>";
+		};
+		1CDC7A7C16E1BA1000BFC269 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1CDC7A7D16E1BA4000BFC269 /* CSStepperViewController.h */,
+				1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C6447B616C7DA3000654781 /* CSStepper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C6447D416C7DA3000654781 /* Build configuration list for PBXNativeTarget "CSStepper" */;
+			buildPhases = (
+				1C6447B316C7DA3000654781 /* Sources */,
+				1C6447B416C7DA3000654781 /* Frameworks */,
+				1C6447B516C7DA3000654781 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CSStepper;
+			productName = CSStepper;
+			productReference = 1C6447B716C7DA3000654781 /* CSStepper.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C6447AF16C7DA2F00654781 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CS;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Studyro Studio";
+			};
+			buildConfigurationList = 1C6447B216C7DA2F00654781 /* Build configuration list for PBXProject "CSStepper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1C6447AE16C7DA2F00654781;
+			productRefGroup = 1C6447B816C7DA3000654781 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C6447B616C7DA3000654781 /* CSStepper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C6447B516C7DA3000654781 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C6447C516C7DA3000654781 /* InfoPlist.strings in Resources */,
+				1C6447CD16C7DA3000654781 /* Default.png in Resources */,
+				1C6447CF16C7DA3000654781 /* Default@2x.png in Resources */,
+				1C6447D116C7DA3000654781 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C6447B316C7DA3000654781 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C6447C716C7DA3000654781 /* main.m in Sources */,
+				1C6447CB16C7DA3000654781 /* CSAppDelegate.m in Sources */,
+				1C6447DB16CA176B00654781 /* CSStepCenter.m in Sources */,
+				1C6447DE16CA186D00654781 /* CSProgram.m in Sources */,
+				1C6447E216CA2DD900654781 /* CSInterface.m in Sources */,
+				1C26562716D1E636006937C5 /* CSCodeParser.m in Sources */,
+				1C26562816D1E636006937C5 /* CSSnippet.m in Sources */,
+				1C26562B16D1E81E006937C5 /* CSCodeView.m in Sources */,
+				1C26562E16D20892006937C5 /* CSBlockView.m in Sources */,
+				1C26563216D24899006937C5 /* UIColor+CSColor.m in Sources */,
+				1C26563516D24C74006937C5 /* CSArrowView.m in Sources */,
+				1C26563C16D26235006937C5 /* CSSelectionSortInterface.m in Sources */,
+				1CDC7A7F16E1BA4000BFC269 /* CSStepperViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1C6447C316C7DA3000654781 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C6447C416C7DA3000654781 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1C6447D216C7DA3000654781 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1C6447D316C7DA3000654781 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1C6447D516C7DA3000654781 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CSStepper/CSStepper-Prefix.pch";
+				INFOPLIST_FILE = "CSStepper/CSStepper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1C6447D616C7DA3000654781 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CSStepper/CSStepper-Prefix.pch";
+				INFOPLIST_FILE = "CSStepper/CSStepper-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C6447B216C7DA2F00654781 /* Build configuration list for PBXProject "CSStepper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C6447D216C7DA3000654781 /* Debug */,
+				1C6447D316C7DA3000654781 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C6447D416C7DA3000654781 /* Build configuration list for PBXNativeTarget "CSStepper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C6447D516C7DA3000654781 /* Debug */,
+				1C6447D616C7DA3000654781 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C6447AF16C7DA2F00654781 /* Project object */;
+}
