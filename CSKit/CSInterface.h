@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CSBlockView.h"
+#import "CSClusteredBlockView.h"
+#import "CSArrowView.h"
 #import "CSProgram.h"
 #import "CSMemModel.h"
 
@@ -18,6 +21,9 @@
 @property (strong, nonatomic, readonly) NSArray *scopeIndexPaths;
 
 - (void)acceptBackgroundView:(UIView *)view;
+
+- (void)showMaskView;
+- (void)dismissMaskView;
 
 // this method should be called after backgroundView is accepted.
 - (void)construct;

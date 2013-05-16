@@ -393,7 +393,7 @@
         if ([[CSProgram sharedProgram] isAtTheLoopBeginning]) _countI = -1;
         
         _countI++;
-        [[CSMemModel sharedMemModel] setValueInStack:[NSString stringWithFormat:@"%u", _countI] named:@"a"];
+        [[CSMemModel sharedMemModel] setValueInStack:[NSString stringWithFormat:@"%u", _countI] named:@"i"];
     }
     else {
         [self.consoleView appendSring:[NSString stringWithFormat:@"%@\n", self.langArray[_countI]]];

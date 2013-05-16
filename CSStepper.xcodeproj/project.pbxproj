@@ -45,7 +45,11 @@
 		1C6447DE16CA186D00654781 /* CSProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447DD16CA186D00654781 /* CSProgram.m */; };
 		1C6447E216CA2DD900654781 /* CSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447E116CA2DD900654781 /* CSInterface.m */; };
 		1C6447E416CA372800654781 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447E316CA372800654781 /* CoreText.framework */; };
-		1C8996F01744B91C00975237 /* CSArrayPointer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8996EF1744B91C00975237 /* CSArrayPointer.m */; };
+		1C8996F01744B91C00975237 /* CSArrayPointerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8996EF1744B91C00975237 /* CSArrayPointerInterface.m */; };
+		1C8996F31744BC4F00975237 /* CSInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8996F21744BC4E00975237 /* CSInputView.m */; };
+		1C8996F61744D20400975237 /* CSTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8996F51744D20300975237 /* CSTipView.m */; };
+		1C8996F8174513B000975237 /* MultiLevelPointer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C8996F7174513B000975237 /* MultiLevelPointer.txt */; };
+		1C8996FB174513CF00975237 /* CSMultiLevelPointerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8996FA174513CF00975237 /* CSMultiLevelPointerInterface.m */; };
 		1CDC7A7F16E1BA4000BFC269 /* CSStepperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */; };
 		1CDC7A8116E1BBD500BFC269 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDC7A8016E1BBD400BFC269 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -116,8 +120,15 @@
 		1C6447E016CA2DD900654781 /* CSInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSInterface.h; path = CSKit/CSInterface.h; sourceTree = "<group>"; };
 		1C6447E116CA2DD900654781 /* CSInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSInterface.m; path = CSKit/CSInterface.m; sourceTree = "<group>"; };
 		1C6447E316CA372800654781 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		1C8996EE1744B91C00975237 /* CSArrayPointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSArrayPointer.h; path = ConcreteEgs/Chapter7/CSArrayPointer.h; sourceTree = "<group>"; };
-		1C8996EF1744B91C00975237 /* CSArrayPointer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSArrayPointer.m; path = ConcreteEgs/Chapter7/CSArrayPointer.m; sourceTree = "<group>"; };
+		1C8996EE1744B91C00975237 /* CSArrayPointerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSArrayPointerInterface.h; path = ConcreteEgs/Chapter7/CSArrayPointerInterface.h; sourceTree = "<group>"; };
+		1C8996EF1744B91C00975237 /* CSArrayPointerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSArrayPointerInterface.m; path = ConcreteEgs/Chapter7/CSArrayPointerInterface.m; sourceTree = "<group>"; };
+		1C8996F11744BC4D00975237 /* CSInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSInputView.h; path = CSKit/CommonViews/CSInputView.h; sourceTree = "<group>"; };
+		1C8996F21744BC4E00975237 /* CSInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSInputView.m; path = CSKit/CommonViews/CSInputView.m; sourceTree = "<group>"; };
+		1C8996F41744D20200975237 /* CSTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSTipView.h; path = CSKit/CommonViews/CSTipView.h; sourceTree = "<group>"; };
+		1C8996F51744D20300975237 /* CSTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSTipView.m; path = CSKit/CommonViews/CSTipView.m; sourceTree = "<group>"; };
+		1C8996F7174513B000975237 /* MultiLevelPointer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultiLevelPointer.txt; path = Resources/code/MultiLevelPointer.txt; sourceTree = "<group>"; };
+		1C8996F9174513CF00975237 /* CSMultiLevelPointerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMultiLevelPointerInterface.h; path = ConcreteEgs/Chapter6/CSMultiLevelPointerInterface.h; sourceTree = "<group>"; };
+		1C8996FA174513CF00975237 /* CSMultiLevelPointerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMultiLevelPointerInterface.m; path = ConcreteEgs/Chapter6/CSMultiLevelPointerInterface.m; sourceTree = "<group>"; };
 		1CDC7A7D16E1BA4000BFC269 /* CSStepperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStepperViewController.h; path = ViewController/CSStepperViewController.h; sourceTree = "<group>"; };
 		1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStepperViewController.m; path = ViewController/CSStepperViewController.m; sourceTree = "<group>"; };
 		1CDC7A8016E1BBD400BFC269 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -170,6 +181,7 @@
 			children = (
 				1C107309171BBA0600CDC0A5 /* StringSort.txt */,
 				1C0E700C17155213008FA655 /* CharPointerArray.txt */,
+				1C8996F7174513B000975237 /* MultiLevelPointer.txt */,
 				1C0E6FFC17152EF7008FA655 /* ArrayPointer.txt */,
 				1C0BAED8170A815D00A3A8DD /* SelectionSort.txt */,
 			);
@@ -181,8 +193,8 @@
 			children = (
 				1C10730B171BBA2600CDC0A5 /* CSStringSortInterface.h */,
 				1C10730C171BBA2600CDC0A5 /* CSStringSortInterface.m */,
-				1C8996EE1744B91C00975237 /* CSArrayPointer.h */,
-				1C8996EF1744B91C00975237 /* CSArrayPointer.m */,
+				1C8996EE1744B91C00975237 /* CSArrayPointerInterface.h */,
+				1C8996EF1744B91C00975237 /* CSArrayPointerInterface.m */,
 			);
 			name = Chapter7;
 			sourceTree = "<group>";
@@ -192,6 +204,8 @@
 			children = (
 				1C0E700917154EB6008FA655 /* CSCharPointerArrayInterface.h */,
 				1C0E700A17154EB6008FA655 /* CSCharPointerArrayInterface.m */,
+				1C8996F9174513CF00975237 /* CSMultiLevelPointerInterface.h */,
+				1C8996FA174513CF00975237 /* CSMultiLevelPointerInterface.m */,
 			);
 			name = Chapter6;
 			sourceTree = "<group>";
@@ -348,6 +362,10 @@
 				1C132852171297F900A472FB /* CSStackCell.m */,
 				1C0E70111715847A008FA655 /* CSConsoleView.h */,
 				1C0E70121715847A008FA655 /* CSConsoleView.m */,
+				1C8996F11744BC4D00975237 /* CSInputView.h */,
+				1C8996F21744BC4E00975237 /* CSInputView.m */,
+				1C8996F41744D20200975237 /* CSTipView.h */,
+				1C8996F51744D20300975237 /* CSTipView.m */,
 				1C0E700517153EDF008FA655 /* CSClusteredBlockView.h */,
 				1C0E700617153EDF008FA655 /* CSClusteredBlockView.m */,
 			);
@@ -428,6 +446,7 @@
 				1C0E6FFD17152EF7008FA655 /* ArrayPointer.txt in Resources */,
 				1C0E700D17155213008FA655 /* CharPointerArray.txt in Resources */,
 				1C10730A171BBA0600CDC0A5 /* StringSort.txt in Resources */,
+				1C8996F8174513B000975237 /* MultiLevelPointer.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +483,10 @@
 				1C1073081719210100CDC0A5 /* CSCollectionViewController.m in Sources */,
 				1C10730D171BBA2600CDC0A5 /* CSStringSortInterface.m in Sources */,
 				1C107313171D3E7500CDC0A5 /* NSString+Separator.m in Sources */,
-				1C8996F01744B91C00975237 /* CSArrayPointer.m in Sources */,
+				1C8996F01744B91C00975237 /* CSArrayPointerInterface.m in Sources */,
+				1C8996F31744BC4F00975237 /* CSInputView.m in Sources */,
+				1C8996F61744D20400975237 /* CSTipView.m in Sources */,
+				1C8996FB174513CF00975237 /* CSMultiLevelPointerInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

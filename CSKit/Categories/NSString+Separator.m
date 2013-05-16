@@ -26,4 +26,31 @@
     return [result copy];
 }
 
+- (BOOL)isLetters
+{
+	if([self length] <= 0)
+		return NO;
+    NSString *regex = @"[a-zA-Z]*";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [predicate evaluateWithObject:self];
+}
+
+- (BOOL)isNumbers
+{
+	if([self length] <= 0)
+		return NO;
+    NSString *regex = @"[0-9]*";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [predicate evaluateWithObject:self];
+}
+
+- (BOOL)isNumberOrLetters
+{
+	if([self length] <= 0)
+		return NO;
+    NSString *regex = @"[a-zA-Z0-9]*";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [predicate evaluateWithObject:self];
+}
+
 @end

@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+char *str[] = {"enter", "lamp", "point", "first"};
+char **p[] = {str+3, str+2, str+1, str};
+cahr ***pp = p;
+
+void main()
+{
+	printf("%s", **++pp);
+	printf("%s", *--*++pp+3);
+	printf("%s", *pp[-2]+3);
+	printf("%s", pp[-1][-1]+1);
+}

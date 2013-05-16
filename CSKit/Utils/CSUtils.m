@@ -13,6 +13,7 @@
 NSString *const kCSProgramCaseSelectionSort = @"SelectionSort";
 NSString *const kCSProgramCaseCharPointerArray = @"CharPointerArray";
 NSString *const kCSProgramCaseStringSort = @"StringSort";
+NSString *const kCSProgramCaseArrayPointer = @"ArrayPointer";
 
 @implementation CSUtils
 

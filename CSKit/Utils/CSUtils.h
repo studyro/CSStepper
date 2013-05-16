@@ -15,6 +15,7 @@ typedef NSString kCSProgramCase;
 extern NSString *const kCSProgramCaseSelectionSort;
 extern NSString *const kCSProgramCaseCharPointerArray;
 extern NSString *const kCSProgramCaseStringSort;
+extern NSString *const kCSProgramCaseArrayPointer;
 
 @interface CSUtils : NSObject
 

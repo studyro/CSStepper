@@ -12,4 +12,8 @@
 
 - (NSArray *)separatedCharStringArrayWithTail:(BOOL)withTail;
 
+- (BOOL)isLetters;
+- (BOOL)isNumbers;
+- (BOOL)isNumberOrLetters;
+
 @end

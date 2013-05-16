@@ -13,6 +13,7 @@
 @property (strong, nonatomic, readwrite) UIView *backgroundView;
 @property (strong, nonatomic, readwrite) dispatch_source_t timer;
 @property (strong, nonatomic, readwrite) NSArray *scopeIndexPaths;
+@property (strong, nonatomic) UIView *maskView;
 @end
 
 @implementation CSInterface
@@ -37,10 +38,34 @@
     self.backgroundView = view;
 }
 
+- (void)showMaskView
+{
+    self.backgroundView.userInteractionEnabled = NO;
+    [self.backgroundView addSubview:self.maskView];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.maskView.hidden = NO;
+        self.maskView.alpha = 0.3;
+    }];
+}
+
+- (void)dismissMaskView
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.maskView.alpha = 0.0;
+    } completion:^(BOOL finished){
+        [self.maskView removeFromSuperview];
+        self.backgroundView.userInteractionEnabled = YES;
+    }];
+}
+
 - (void)construct
 {
     // should be implemented by subclasses
     // implement this method to load subviews in self.backgroundView
+    self.maskView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1024.0, 768.0)];
+    self.maskView.backgroundColor = [UIColor blackColor];
+    self.maskView.opaque = NO, self.maskView.alpha = 0.0;
+    self.maskView.userInteractionEnabled = NO;
 }
 
 - (void)tryToBeginNewScope
