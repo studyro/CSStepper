@@ -10,12 +10,6 @@
 
 @implementation CSSnippet
 
-- (void)dealloc
-{
-    [_subSnippets release];
-    
-    [super dealloc];
-}
 
 - (instancetype)initWithRangeLocation:(NSUInteger)location length:(NSUInteger)length
 {
@@ -32,10 +26,7 @@
     NSMutableString *string = [NSMutableString stringWithFormat:@"\n-location : %d, length, %d", self.textRange.location, self.textRange.length];
     if (self.subSnippets) {
         [string appendFormat:@"has %d children", [self.subSnippets count]];
-        for (id snippet in self.subSnippets)
-            [string appendFormat:@"\n\t\t %@", [snippet description]];
     }
-    
     
     return string;
 }

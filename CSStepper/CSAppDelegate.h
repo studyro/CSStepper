@@ -11,7 +11,7 @@
 
 @interface CSAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (retain, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow *window;
 //@property (retain, nonatomic) CSStepperViewController *viewController;
 
 @end

@@ -1,0 +1,21 @@
+#include <stdio.h>
+#define NULL 0
+
+void main()
+{
+	char string[][12] = {"Turbo C", "Borland C++", "Access", ""};
+	
+	char *pstr[4];
+	
+	int a;
+	
+	for (a = 0; a < 4; a++)
+	{
+		pstr[a] = string[a];
+	}
+	
+	for (a = 0; *pstr[a] != NULL; a++)
+	{
+		printf("Language %d is %s\n", a+1, pstr[a]);
+	}
+}

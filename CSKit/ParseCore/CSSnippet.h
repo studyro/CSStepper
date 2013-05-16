@@ -10,7 +10,7 @@
 
 @interface CSSnippet : NSObject
 
-@property (nonatomic, retain) NSArray *subSnippets;
+@property (nonatomic, strong) NSArray *subSnippets;
 @property (nonatomic, assign) NSRange textRange;
 
 - (instancetype)initWithRangeLocation:(NSUInteger)location length:(NSUInteger)length;

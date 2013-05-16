@@ -15,31 +15,26 @@ struct ShouldHandleKeys {
 
 @interface CSCodeParser()
 {
-    NSMutableArray *_parentSnippetsStack;
-    NSMutableArray *_parentSubSnippetMutableArrayStack;
     struct ShouldHandleKeys _shouldHandleKeys;
 }
+
+@property (strong, nonatomic) NSMutableArray *parentSnippetsStack;
+@property (strong, nonatomic) NSMutableArray *parentSubSnippetMutableArrayStack;
+
 @end
 
 @implementation CSCodeParser
 
-- (void)dealloc
-{
-    if (_parentSnippetsStack) [_parentSnippetsStack release];
-    if (_parentSubSnippetMutableArrayStack) [_parentSubSnippetMutableArrayStack release];
-    if (_snippetsTree) [_snippetsTree release];
-    
-    if (_mainScanner) [_mainScanner release];
-    if (_separatorScanner) [_separatorScanner release];
-    
-    [super dealloc];
-}
 
 - (id)init
 {
     if (self = [super init]) {
         _shouldHandleKeys.inBracketCount = 0;
         _shouldHandleKeys.isBehindEqual = NO;
+        
+        _snippetsTree = [[NSMutableArray alloc] initWithCapacity:3];
+        
+        [self _pushIntoParentsChildrenStackWithSnippetArray:_snippetsTree];
     }
     
     return self;
@@ -47,32 +42,32 @@ struct ShouldHandleKeys {
 
 - (CSSnippet *)_popFromParentSnippetStack
 {
-    if ([_parentSnippetsStack count] == 0) return nil;
-    CSSnippet *currentParentSnippet = [[_parentSnippetsStack lastObject] retain];
-    [_parentSnippetsStack removeLastObject];
-    return [currentParentSnippet autorelease];
+    if ([self.parentSnippetsStack count] == 0) return nil;
+    CSSnippet *currentParentSnippet = [self.parentSnippetsStack lastObject];
+    [self.parentSnippetsStack removeLastObject];
+    return currentParentSnippet;
 }
 
 - (void)_pushIntoParentSnippetStackWithSnippet:(CSSnippet *)snippet
 {
-    if (_parentSnippetsStack == nil)
-        _parentSnippetsStack = [[NSMutableArray alloc] init];
-    [_parentSnippetsStack addObject:snippet];
+    if (self.parentSnippetsStack == nil)
+        self.parentSnippetsStack = [[NSMutableArray alloc] init];
+    [self.parentSnippetsStack addObject:snippet];
 }
 
 - (NSMutableArray *)_popFromParentsChildrenStack
 {
-    if ([_parentSubSnippetMutableArrayStack count] == 0) return nil;
-    NSMutableArray *currentParentsChildren = [[_parentSubSnippetMutableArrayStack lastObject] retain];
-    [_parentSubSnippetMutableArrayStack removeLastObject];
-    return [currentParentsChildren autorelease];
+    if ([self.parentSubSnippetMutableArrayStack count] == 0) return nil;
+    NSMutableArray *currentParentsChildren = [self.parentSubSnippetMutableArrayStack lastObject];
+    [self.parentSubSnippetMutableArrayStack removeLastObject];
+    return currentParentsChildren;
 }
 
 - (void)_pushIntoParentsChildrenStackWithSnippetArray:(NSMutableArray *)snippetMutableArray
 {
-    if (_parentSubSnippetMutableArrayStack == nil)
-        _parentSubSnippetMutableArrayStack = [[NSMutableArray alloc] init];
-    [_parentSubSnippetMutableArrayStack addObject:snippetMutableArray];
+    if (self.parentSubSnippetMutableArrayStack == nil)
+        self.parentSubSnippetMutableArrayStack = [[NSMutableArray alloc] init];
+    [self.parentSubSnippetMutableArrayStack addObject:snippetMutableArray];
 }
 
 - (void)_handleScannerAccordingToSeparator:(NSString *)character
@@ -82,7 +77,6 @@ struct ShouldHandleKeys {
         CSSnippet *lineSnippet = [[CSSnippet alloc] initWithRangeLocation:[_mainScanner scanLocation] length:[_separatorScanner scanLocation] - [_mainScanner scanLocation] + 1];
         NSMutableArray *currentParentsChildren = [self _popFromParentsChildrenStack];
         [currentParentsChildren addObject:lineSnippet];
-        [lineSnippet release];
         [self _pushIntoParentsChildrenStackWithSnippetArray:currentParentsChildren];
     }
     else if ([character isEqualToString:@"}"]) {
@@ -94,8 +88,7 @@ struct ShouldHandleKeys {
         
         currentParentSnippet.textRange = finishedRange;
         currentParentSnippet.subSnippets = [self _popFromParentsChildrenStack];
-        
-        if ([_parentSubSnippetMutableArrayStack count]) {
+        if ([self.parentSubSnippetMutableArrayStack count]) {
             NSMutableArray *parentChildrenArray = [self _popFromParentsChildrenStack];
             [parentChildrenArray addObject:currentParentSnippet];
             [self _pushIntoParentsChildrenStackWithSnippetArray:parentChildrenArray];
@@ -106,24 +99,13 @@ struct ShouldHandleKeys {
         CSSnippet *aNewParentSnippet = [[CSSnippet alloc] initWithRangeLocation:[_mainScanner scanLocation] length:0];
         NSMutableArray *aNewParentChildrenArray = [[NSMutableArray alloc] initWithCapacity:5];
         
-        if ([_parentSnippetsStack count] == 0) {
-            if (_snippetsTree == nil)
-                _snippetsTree = [[NSMutableArray alloc] initWithCapacity:3];
-            
-            [_snippetsTree addObject:aNewParentSnippet];
-        }
-        
         [self _pushIntoParentSnippetStackWithSnippet:aNewParentSnippet];
-        [aNewParentSnippet release];
         [self _pushIntoParentsChildrenStackWithSnippetArray:aNewParentChildrenArray];
-        [aNewParentChildrenArray release];
     }
     
-    // _mainScanner should scan beginning with separator location next turn.
-    if ([_separatorScanner scanLocation] < [[_separatorScanner string] length] - 1)
-        [_mainScanner setScanLocation:[_separatorScanner scanLocation] + 1];
-    else
-        [_mainScanner setScanLocation:[_separatorScanner scanLocation]];
+    if (![_separatorScanner isAtEnd]) {
+        [_mainScanner setScanLocation:_separatorScanner.scanLocation + 1];
+    }
 }
 
 - (BOOL)_isSeparatorCharacterWithString:(NSString *)character
@@ -135,24 +117,39 @@ struct ShouldHandleKeys {
 
 - (BOOL)_isIgnorableSeperatorWithString:(NSString *)character
 {
-    if (character == nil || (_shouldHandleKeys.inBracketCount && ![character isEqualToString:@")"])) return YES;
-    
-    if ([character isEqualToString:@";"] && _shouldHandleKeys.isBehindEqual == YES) {
-        _shouldHandleKeys.isBehindEqual = NO;
-        return NO;
-    }
+    BOOL isIgnorable;
     if ([@"()=" rangeOfString:character].location != NSNotFound) {
         if ([character isEqualToString:@"("])
             _shouldHandleKeys.inBracketCount++;
         else if ([character isEqualToString:@")"])
             _shouldHandleKeys.inBracketCount--;
-        else if ([character isEqualToString:@"="])
-            _shouldHandleKeys.isBehindEqual = YES;
-        
-        return YES;
+        else if ([character isEqualToString:@"="]) {
+            if (_shouldHandleKeys.inBracketCount == 0)
+                _shouldHandleKeys.isBehindEqual = YES;
+            else
+                _shouldHandleKeys.isBehindEqual = NO;
+        }
+        isIgnorable = YES;
     }
-    else
-        return _shouldHandleKeys.isBehindEqual || _shouldHandleKeys.inBracketCount;
+    else {
+        isIgnorable = NO;
+        if (_shouldHandleKeys.inBracketCount) {
+            // any char in bracket shouldn't be regarded as separator
+            isIgnorable = YES;
+        }
+        else {
+            if ([character isEqualToString:@";"]) {
+                // a ';' out of bracket will terminate an equal.
+                _shouldHandleKeys.isBehindEqual = NO;
+            }
+            else if (_shouldHandleKeys.isBehindEqual == YES) {
+                // '{' or '}' behind '=' shouldn't be ragarded as separator
+                isIgnorable = YES;
+            }
+        }
+    }
+    
+    return isIgnorable;
 }
 
 - (NSArray *)snippetsArrayByString:(NSString *)codeText
@@ -168,7 +165,6 @@ struct ShouldHandleKeys {
     _separatorScanner = [[NSScanner alloc] initWithString:codeText];
     [_separatorScanner setCharactersToBeSkipped:nil];
     NSCharacterSet *separatorSet = [NSCharacterSet characterSetWithCharactersInString:@";{}()="];
-    
     NSString *mainScannedTempString = nil;
     NSRange unitRange;
     unitRange.length = 1;
@@ -176,14 +172,18 @@ struct ShouldHandleKeys {
         unitRange.location = [_mainScanner scanLocation];
         mainScannedTempString = [codeText substringWithRange:unitRange];
         [_separatorScanner setScanLocation:[_mainScanner scanLocation]];
+        
         if (![self _isSeparatorCharacterWithString:mainScannedTempString]) {
             NSString *character = nil;
-            while ([self _isIgnorableSeperatorWithString:character]) {
+            BOOL isIgnorable = YES;
+            while (isIgnorable) {
                 [_separatorScanner scanUpToCharactersFromSet:separatorSet intoString:NULL];
                 unitRange.location = [_separatorScanner scanLocation];
+                
                 character = [codeText substringWithRange:unitRange];
                 
-                if (![_separatorScanner isAtEnd])
+                isIgnorable = [self _isIgnorableSeperatorWithString:character];
+                if (![_separatorScanner isAtEnd] && isIgnorable)
                     [_separatorScanner setScanLocation:[_separatorScanner scanLocation] + 1];
             }
             [self _handleScannerAccordingToSeparator:character];
@@ -192,7 +192,7 @@ struct ShouldHandleKeys {
             [self _handleScannerAccordingToSeparator:mainScannedTempString];
     }
     
-    return [[_snippetsTree copy] autorelease];
+    return [_snippetsTree copy];
 }
 
 @end

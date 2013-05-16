@@ -10,4 +10,6 @@
 
 @interface CSStepperViewController : UIViewController
 
+- (instancetype)initWithCase:(NSString *)caseString;
+
 @end

@@ -8,20 +8,35 @@
 
 #import <Foundation/Foundation.h>
 #import "CSCodeView.h"
+#import "CSUtils.h"
 
 @interface CSProgram : NSObject
 
-@property (nonatomic, assign) NSRange currentRange;
 @property (nonatomic, copy) NSString *codeText;
 
-- (instancetype)initWithCodeText:(NSString *)codeText indexPaths:(NSArray *)indexPaths;
+// codeView's highlight is managed by this class, not viewControllers or other classes
+@property (assign, nonatomic) CSCodeView *codeView;
 
-- (void)acceptCodeView:(CSCodeView *)codeView;
+@property (strong, nonatomic, readonly) NSIndexPath *currentIndexPath;
 
-- (void)nextStep;
+@property (strong, nonatomic, readonly) NSIndexPath *nextIndexPath;
+
++ (instancetype)sharedProgram;
+
+- (void)reloadProgram:(kCSProgramCase *)aCase
+                error:(NSError **)error;
+
+- (void)beginNewScopeWithLoopCount:(NSInteger)loopCount;
+
+- (void)beginNewScopeAtIndexPath:(NSIndexPath *)indexPath;
+
+- (BOOL)isAtTheLoopBeginning;
+
+// step changing is called by interface logic.
+- (BOOL)nextStep;
 
 - (void)lastStep;
 
-- (BOOL)hasNext;
+- (BOOL)hasChildrenOfCodeAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

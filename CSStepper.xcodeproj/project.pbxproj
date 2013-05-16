@@ -7,13 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0BAED6170A813F00A3A8DD /* SelectionSort.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0BAED5170A813F00A3A8DD /* SelectionSort.plist */; };
+		1C0BAEDA170A816A00A3A8DD /* SelectionSort.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C0BAED8170A815D00A3A8DD /* SelectionSort.txt */; };
+		1C0E6FFD17152EF7008FA655 /* ArrayPointer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E6FFC17152EF7008FA655 /* ArrayPointer.txt */; };
+		1C0E700717153EDF008FA655 /* CSClusteredBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E700617153EDF008FA655 /* CSClusteredBlockView.m */; };
+		1C0E700B17154EB6008FA655 /* CSCharPointerArrayInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E700A17154EB6008FA655 /* CSCharPointerArrayInterface.m */; };
+		1C0E700D17155213008FA655 /* CharPointerArray.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E700C17155213008FA655 /* CharPointerArray.txt */; };
+		1C0E70131715847A008FA655 /* CSConsoleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E70121715847A008FA655 /* CSConsoleView.m */; };
+		1C10730217182F1B00CDC0A5 /* CSCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C10730117182F1B00CDC0A5 /* CSCommentView.m */; };
+		1C1073051718349400CDC0A5 /* CSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1073041718349400CDC0A5 /* CSUtils.m */; };
+		1C1073081719210100CDC0A5 /* CSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1073071719210100CDC0A5 /* CSCollectionViewController.m */; };
+		1C10730A171BBA0600CDC0A5 /* StringSort.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C107309171BBA0600CDC0A5 /* StringSort.txt */; };
+		1C10730D171BBA2600CDC0A5 /* CSStringSortInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C10730C171BBA2600CDC0A5 /* CSStringSortInterface.m */; };
+		1C107313171D3E7500CDC0A5 /* NSString+Separator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C107312171D3E7500CDC0A5 /* NSString+Separator.m */; };
+		1C10930817095DBE0079D261 /* CSSortInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C10930717095DBE0079D261 /* CSSortInterface.m */; };
+		1C10930B1709C28F0079D261 /* CSSelectionSortInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C10930A1709C28F0079D261 /* CSSelectionSortInterface.m */; };
+		1C1328501712581F00A472FB /* CSMemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C13284F1712581F00A472FB /* CSMemViewController.m */; };
+		1C132853171297F900A472FB /* CSStackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C132852171297F900A472FB /* CSStackCell.m */; };
+		1C1369BA17114BC6001766C4 /* CSMemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1369B917114BC6001766C4 /* CSMemModel.m */; };
+		1C1369BD1711B763001766C4 /* CSStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1369BC1711B763001766C4 /* CSStack.m */; };
+		1C1369C11711BFB4001766C4 /* PZHNExpandableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1369C01711BFB4001766C4 /* PZHNExpandableTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1C26562716D1E636006937C5 /* CSCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562416D1E636006937C5 /* CSCodeParser.m */; };
 		1C26562816D1E636006937C5 /* CSSnippet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562616D1E636006937C5 /* CSSnippet.m */; };
 		1C26562B16D1E81E006937C5 /* CSCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562A16D1E81E006937C5 /* CSCodeView.m */; };
 		1C26562E16D20892006937C5 /* CSBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562D16D20892006937C5 /* CSBlockView.m */; };
 		1C26563216D24899006937C5 /* UIColor+CSColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26563116D24899006937C5 /* UIColor+CSColor.m */; };
 		1C26563516D24C74006937C5 /* CSArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26563416D24C74006937C5 /* CSArrowView.m */; };
-		1C26563C16D26235006937C5 /* CSSelectionSortInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26563B16D26235006937C5 /* CSSelectionSortInterface.m */; };
 		1C6447BB16C7DA3000654781 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BA16C7DA3000654781 /* UIKit.framework */; };
 		1C6447BD16C7DA3000654781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BC16C7DA3000654781 /* Foundation.framework */; };
 		1C6447BF16C7DA3000654781 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BE16C7DA3000654781 /* CoreGraphics.framework */; };
@@ -23,15 +42,50 @@
 		1C6447CD16C7DA3000654781 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C6447CC16C7DA3000654781 /* Default.png */; };
 		1C6447CF16C7DA3000654781 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C6447CE16C7DA3000654781 /* Default@2x.png */; };
 		1C6447D116C7DA3000654781 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C6447D016C7DA3000654781 /* Default-568h@2x.png */; };
-		1C6447DB16CA176B00654781 /* CSStepCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447DA16CA176B00654781 /* CSStepCenter.m */; };
 		1C6447DE16CA186D00654781 /* CSProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447DD16CA186D00654781 /* CSProgram.m */; };
 		1C6447E216CA2DD900654781 /* CSInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6447E116CA2DD900654781 /* CSInterface.m */; };
 		1C6447E416CA372800654781 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447E316CA372800654781 /* CoreText.framework */; };
+		1C8996F01744B91C00975237 /* CSArrayPointer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8996EF1744B91C00975237 /* CSArrayPointer.m */; };
 		1CDC7A7F16E1BA4000BFC269 /* CSStepperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */; };
 		1CDC7A8116E1BBD500BFC269 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDC7A8016E1BBD400BFC269 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C0BAED5170A813F00A3A8DD /* SelectionSort.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SelectionSort.plist; path = Resources/plists/SelectionSort.plist; sourceTree = "<group>"; };
+		1C0BAED8170A815D00A3A8DD /* SelectionSort.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SelectionSort.txt; path = Resources/code/SelectionSort.txt; sourceTree = "<group>"; };
+		1C0E6FFC17152EF7008FA655 /* ArrayPointer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ArrayPointer.txt; path = Resources/code/ArrayPointer.txt; sourceTree = "<group>"; };
+		1C0E700517153EDF008FA655 /* CSClusteredBlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSClusteredBlockView.h; path = CSKit/CommonViews/CSClusteredBlockView.h; sourceTree = "<group>"; };
+		1C0E700617153EDF008FA655 /* CSClusteredBlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSClusteredBlockView.m; path = CSKit/CommonViews/CSClusteredBlockView.m; sourceTree = "<group>"; };
+		1C0E700917154EB6008FA655 /* CSCharPointerArrayInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCharPointerArrayInterface.h; path = ConcreteEgs/Chapter6/CSCharPointerArrayInterface.h; sourceTree = "<group>"; };
+		1C0E700A17154EB6008FA655 /* CSCharPointerArrayInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCharPointerArrayInterface.m; path = ConcreteEgs/Chapter6/CSCharPointerArrayInterface.m; sourceTree = "<group>"; };
+		1C0E700C17155213008FA655 /* CharPointerArray.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CharPointerArray.txt; path = Resources/code/CharPointerArray.txt; sourceTree = "<group>"; };
+		1C0E70111715847A008FA655 /* CSConsoleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSConsoleView.h; path = CSKit/CommonViews/CSConsoleView.h; sourceTree = "<group>"; };
+		1C0E70121715847A008FA655 /* CSConsoleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSConsoleView.m; path = CSKit/CommonViews/CSConsoleView.m; sourceTree = "<group>"; };
+		1C10730017182F1B00CDC0A5 /* CSCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCommentView.h; path = CSKit/CommonViews/CSCommentView.h; sourceTree = "<group>"; };
+		1C10730117182F1B00CDC0A5 /* CSCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCommentView.m; path = CSKit/CommonViews/CSCommentView.m; sourceTree = "<group>"; };
+		1C1073031718349400CDC0A5 /* CSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSUtils.h; path = CSKit/Utils/CSUtils.h; sourceTree = "<group>"; };
+		1C1073041718349400CDC0A5 /* CSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSUtils.m; path = CSKit/Utils/CSUtils.m; sourceTree = "<group>"; };
+		1C1073061719210100CDC0A5 /* CSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCollectionViewController.h; path = ViewController/CSCollectionViewController.h; sourceTree = "<group>"; };
+		1C1073071719210100CDC0A5 /* CSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCollectionViewController.m; path = ViewController/CSCollectionViewController.m; sourceTree = "<group>"; };
+		1C107309171BBA0600CDC0A5 /* StringSort.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = StringSort.txt; path = Resources/code/StringSort.txt; sourceTree = "<group>"; };
+		1C10730B171BBA2600CDC0A5 /* CSStringSortInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStringSortInterface.h; path = ConcreteEgs/Chapter7/CSStringSortInterface.h; sourceTree = "<group>"; };
+		1C10730C171BBA2600CDC0A5 /* CSStringSortInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStringSortInterface.m; path = ConcreteEgs/Chapter7/CSStringSortInterface.m; sourceTree = "<group>"; };
+		1C107311171D3E7500CDC0A5 /* NSString+Separator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Separator.h"; path = "CSKit/Categories/NSString+Separator.h"; sourceTree = "<group>"; };
+		1C107312171D3E7500CDC0A5 /* NSString+Separator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Separator.m"; path = "CSKit/Categories/NSString+Separator.m"; sourceTree = "<group>"; };
+		1C10930617095DBE0079D261 /* CSSortInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSortInterface.h; path = ConcreteEgs/Sort/CSSortInterface.h; sourceTree = "<group>"; };
+		1C10930717095DBE0079D261 /* CSSortInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSortInterface.m; path = ConcreteEgs/Sort/CSSortInterface.m; sourceTree = "<group>"; };
+		1C1093091709C28F0079D261 /* CSSelectionSortInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSelectionSortInterface.h; path = ConcreteEgs/Sort/CSSelectionSortInterface.h; sourceTree = "<group>"; };
+		1C10930A1709C28F0079D261 /* CSSelectionSortInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSelectionSortInterface.m; path = ConcreteEgs/Sort/CSSelectionSortInterface.m; sourceTree = "<group>"; };
+		1C13284E1712581F00A472FB /* CSMemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMemViewController.h; path = ViewController/CSMemViewController.h; sourceTree = "<group>"; };
+		1C13284F1712581F00A472FB /* CSMemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMemViewController.m; path = ViewController/CSMemViewController.m; sourceTree = "<group>"; };
+		1C132851171297F900A472FB /* CSStackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStackCell.h; path = CSKit/CommonViews/CSStackCell.h; sourceTree = "<group>"; };
+		1C132852171297F900A472FB /* CSStackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStackCell.m; path = CSKit/CommonViews/CSStackCell.m; sourceTree = "<group>"; };
+		1C1369B817114BC6001766C4 /* CSMemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMemModel.h; path = CSKit/Model/CSMemModel.h; sourceTree = "<group>"; };
+		1C1369B917114BC6001766C4 /* CSMemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMemModel.m; path = CSKit/Model/CSMemModel.m; sourceTree = "<group>"; };
+		1C1369BB1711B763001766C4 /* CSStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStack.h; path = CSKit/Model/CSStack.h; sourceTree = "<group>"; };
+		1C1369BC1711B763001766C4 /* CSStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStack.m; path = CSKit/Model/CSStack.m; sourceTree = "<group>"; };
+		1C1369BF1711BFB4001766C4 /* PZHNExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PZHNExpandableTableView.h; path = External/PZHNExpandableTableView.h; sourceTree = "<group>"; };
+		1C1369C01711BFB4001766C4 /* PZHNExpandableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PZHNExpandableTableView.m; path = External/PZHNExpandableTableView.m; sourceTree = "<group>"; };
 		1C26562316D1E636006937C5 /* CSCodeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCodeParser.h; path = CSKit/ParseCore/CSCodeParser.h; sourceTree = "<group>"; };
 		1C26562416D1E636006937C5 /* CSCodeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCodeParser.m; path = CSKit/ParseCore/CSCodeParser.m; sourceTree = "<group>"; };
 		1C26562516D1E636006937C5 /* CSSnippet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSnippet.h; path = CSKit/ParseCore/CSSnippet.h; sourceTree = "<group>"; };
@@ -44,8 +98,6 @@
 		1C26563116D24899006937C5 /* UIColor+CSColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CSColor.m"; path = "CSKit/Categories/UIColor+CSColor.m"; sourceTree = "<group>"; };
 		1C26563316D24C74006937C5 /* CSArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSArrowView.h; path = CSKit/CommonViews/CSArrowView.h; sourceTree = "<group>"; };
 		1C26563416D24C74006937C5 /* CSArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSArrowView.m; path = CSKit/CommonViews/CSArrowView.m; sourceTree = "<group>"; };
-		1C26563A16D26235006937C5 /* CSSelectionSortInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSelectionSortInterface.h; path = CSData/InsertionSort/CSSelectionSortInterface.h; sourceTree = "<group>"; };
-		1C26563B16D26235006937C5 /* CSSelectionSortInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSelectionSortInterface.m; path = CSData/InsertionSort/CSSelectionSortInterface.m; sourceTree = "<group>"; };
 		1C6447B716C7DA3000654781 /* CSStepper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSStepper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C6447BA16C7DA3000654781 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1C6447BC16C7DA3000654781 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,13 +111,13 @@
 		1C6447CC16C7DA3000654781 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1C6447CE16C7DA3000654781 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1C6447D016C7DA3000654781 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		1C6447D916CA176B00654781 /* CSStepCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStepCenter.h; path = CSKit/CSStepCenter.h; sourceTree = "<group>"; };
-		1C6447DA16CA176B00654781 /* CSStepCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStepCenter.m; path = CSKit/CSStepCenter.m; sourceTree = "<group>"; };
 		1C6447DC16CA186D00654781 /* CSProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSProgram.h; path = CSKit/CSProgram.h; sourceTree = "<group>"; };
 		1C6447DD16CA186D00654781 /* CSProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSProgram.m; path = CSKit/CSProgram.m; sourceTree = "<group>"; };
 		1C6447E016CA2DD900654781 /* CSInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSInterface.h; path = CSKit/CSInterface.h; sourceTree = "<group>"; };
 		1C6447E116CA2DD900654781 /* CSInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSInterface.m; path = CSKit/CSInterface.m; sourceTree = "<group>"; };
 		1C6447E316CA372800654781 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		1C8996EE1744B91C00975237 /* CSArrayPointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSArrayPointer.h; path = ConcreteEgs/Chapter7/CSArrayPointer.h; sourceTree = "<group>"; };
+		1C8996EF1744B91C00975237 /* CSArrayPointer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSArrayPointer.m; path = ConcreteEgs/Chapter7/CSArrayPointer.m; sourceTree = "<group>"; };
 		1CDC7A7D16E1BA4000BFC269 /* CSStepperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStepperViewController.h; path = ViewController/CSStepperViewController.h; sourceTree = "<group>"; };
 		1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStepperViewController.m; path = ViewController/CSStepperViewController.m; sourceTree = "<group>"; };
 		1CDC7A8016E1BBD400BFC269 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -87,6 +139,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C0B46C917145AC500A25B3A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1C1073031718349400CDC0A5 /* CSUtils.h */,
+				1C1073041718349400CDC0A5 /* CSUtils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		1C0BAED11709EB7C00A3A8DD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1C0BAED7170A814200A3A8DD /* code */,
+				1C0BAED4170A813300A3A8DD /* plists */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1C0BAED4170A813300A3A8DD /* plists */ = {
+			isa = PBXGroup;
+			children = (
+				1C0BAED5170A813F00A3A8DD /* SelectionSort.plist */,
+			);
+			name = plists;
+			sourceTree = "<group>";
+		};
+		1C0BAED7170A814200A3A8DD /* code */ = {
+			isa = PBXGroup;
+			children = (
+				1C107309171BBA0600CDC0A5 /* StringSort.txt */,
+				1C0E700C17155213008FA655 /* CharPointerArray.txt */,
+				1C0E6FFC17152EF7008FA655 /* ArrayPointer.txt */,
+				1C0BAED8170A815D00A3A8DD /* SelectionSort.txt */,
+			);
+			name = code;
+			sourceTree = "<group>";
+		};
+		1C0E700117153398008FA655 /* Chapter7 */ = {
+			isa = PBXGroup;
+			children = (
+				1C10730B171BBA2600CDC0A5 /* CSStringSortInterface.h */,
+				1C10730C171BBA2600CDC0A5 /* CSStringSortInterface.m */,
+				1C8996EE1744B91C00975237 /* CSArrayPointer.h */,
+				1C8996EF1744B91C00975237 /* CSArrayPointer.m */,
+			);
+			name = Chapter7;
+			sourceTree = "<group>";
+		};
+		1C0E700817154E98008FA655 /* Chapter6 */ = {
+			isa = PBXGroup;
+			children = (
+				1C0E700917154EB6008FA655 /* CSCharPointerArrayInterface.h */,
+				1C0E700A17154EB6008FA655 /* CSCharPointerArrayInterface.m */,
+			);
+			name = Chapter6;
+			sourceTree = "<group>";
+		};
+		1C10930217095C9F0079D261 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				1C10930617095DBE0079D261 /* CSSortInterface.h */,
+				1C10930717095DBE0079D261 /* CSSortInterface.m */,
+				1C1093091709C28F0079D261 /* CSSelectionSortInterface.h */,
+				1C10930A1709C28F0079D261 /* CSSelectionSortInterface.m */,
+			);
+			name = Sort;
+			sourceTree = "<group>";
+		};
+		1C13699F17113939001766C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C1369B817114BC6001766C4 /* CSMemModel.h */,
+				1C1369B917114BC6001766C4 /* CSMemModel.m */,
+				1C1369BB1711B763001766C4 /* CSStack.h */,
+				1C1369BC1711B763001766C4 /* CSStack.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1C1369BE1711BF98001766C4 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				1C1369BF1711BFB4001766C4 /* PZHNExpandableTableView.h */,
+				1C1369C01711BFB4001766C4 /* PZHNExpandableTableView.m */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
 		1C26561C16D1E5D0006937C5 /* ParseCore */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,26 +243,21 @@
 			children = (
 				1C26563016D24899006937C5 /* UIColor+CSColor.h */,
 				1C26563116D24899006937C5 /* UIColor+CSColor.m */,
+				1C107311171D3E7500CDC0A5 /* NSString+Separator.h */,
+				1C107312171D3E7500CDC0A5 /* NSString+Separator.m */,
 			);
 			name = Categories;
-			sourceTree = "<group>";
-		};
-		1C26563616D261F3006937C5 /* SelectionSort */ = {
-			isa = PBXGroup;
-			children = (
-				1C26563A16D26235006937C5 /* CSSelectionSortInterface.h */,
-				1C26563B16D26235006937C5 /* CSSelectionSortInterface.m */,
-			);
-			name = SelectionSort;
 			sourceTree = "<group>";
 		};
 		1C6447AE16C7DA2F00654781 = {
 			isa = PBXGroup;
 			children = (
 				1CDC7A7C16E1BA1000BFC269 /* ViewController */,
-				1C6447D816C880A900654781 /* CSData */,
+				1C6447D816C880A900654781 /* ConcreteEgs */,
 				1C6447D716C7DB6700654781 /* CSKit */,
 				1C6447C016C7DA3000654781 /* CSStepper */,
+				1C1369BE1711BF98001766C4 /* External */,
+				1C0BAED11709EB7C00A3A8DD /* Resources */,
 				1C6447B916C7DA3000654781 /* Frameworks */,
 				1C6447B816C7DA3000654781 /* Products */,
 			);
@@ -175,11 +310,11 @@
 		1C6447D716C7DB6700654781 /* CSKit */ = {
 			isa = PBXGroup;
 			children = (
+				1C0B46C917145AC500A25B3A /* Utils */,
+				1C13699F17113939001766C4 /* Model */,
 				1C26562F16D2476A006937C5 /* Categories */,
 				1C26561C16D1E5D0006937C5 /* ParseCore */,
 				1C6447DF16CA1CF000654781 /* CommonViews */,
-				1C6447D916CA176B00654781 /* CSStepCenter.h */,
-				1C6447DA16CA176B00654781 /* CSStepCenter.m */,
 				1C6447DC16CA186D00654781 /* CSProgram.h */,
 				1C6447DD16CA186D00654781 /* CSProgram.m */,
 				1C6447E016CA2DD900654781 /* CSInterface.h */,
@@ -188,12 +323,14 @@
 			name = CSKit;
 			sourceTree = "<group>";
 		};
-		1C6447D816C880A900654781 /* CSData */ = {
+		1C6447D816C880A900654781 /* ConcreteEgs */ = {
 			isa = PBXGroup;
 			children = (
-				1C26563616D261F3006937C5 /* SelectionSort */,
+				1C0E700817154E98008FA655 /* Chapter6 */,
+				1C0E700117153398008FA655 /* Chapter7 */,
+				1C10930217095C9F0079D261 /* Sort */,
 			);
-			name = CSData;
+			name = ConcreteEgs;
 			sourceTree = "<group>";
 		};
 		1C6447DF16CA1CF000654781 /* CommonViews */ = {
@@ -201,10 +338,18 @@
 			children = (
 				1C26562916D1E81E006937C5 /* CSCodeView.h */,
 				1C26562A16D1E81E006937C5 /* CSCodeView.m */,
+				1C10730017182F1B00CDC0A5 /* CSCommentView.h */,
+				1C10730117182F1B00CDC0A5 /* CSCommentView.m */,
 				1C26562C16D20892006937C5 /* CSBlockView.h */,
 				1C26562D16D20892006937C5 /* CSBlockView.m */,
 				1C26563316D24C74006937C5 /* CSArrowView.h */,
 				1C26563416D24C74006937C5 /* CSArrowView.m */,
+				1C132851171297F900A472FB /* CSStackCell.h */,
+				1C132852171297F900A472FB /* CSStackCell.m */,
+				1C0E70111715847A008FA655 /* CSConsoleView.h */,
+				1C0E70121715847A008FA655 /* CSConsoleView.m */,
+				1C0E700517153EDF008FA655 /* CSClusteredBlockView.h */,
+				1C0E700617153EDF008FA655 /* CSClusteredBlockView.m */,
 			);
 			name = CommonViews;
 			sourceTree = "<group>";
@@ -214,6 +359,10 @@
 			children = (
 				1CDC7A7D16E1BA4000BFC269 /* CSStepperViewController.h */,
 				1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */,
+				1C13284E1712581F00A472FB /* CSMemViewController.h */,
+				1C13284F1712581F00A472FB /* CSMemViewController.m */,
+				1C1073061719210100CDC0A5 /* CSCollectionViewController.h */,
+				1C1073071719210100CDC0A5 /* CSCollectionViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -270,10 +419,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C0BAEDA170A816A00A3A8DD /* SelectionSort.txt in Resources */,
 				1C6447C516C7DA3000654781 /* InfoPlist.strings in Resources */,
 				1C6447CD16C7DA3000654781 /* Default.png in Resources */,
 				1C6447CF16C7DA3000654781 /* Default@2x.png in Resources */,
 				1C6447D116C7DA3000654781 /* Default-568h@2x.png in Resources */,
+				1C0BAED6170A813F00A3A8DD /* SelectionSort.plist in Resources */,
+				1C0E6FFD17152EF7008FA655 /* ArrayPointer.txt in Resources */,
+				1C0E700D17155213008FA655 /* CharPointerArray.txt in Resources */,
+				1C10730A171BBA0600CDC0A5 /* StringSort.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +440,6 @@
 			files = (
 				1C6447C716C7DA3000654781 /* main.m in Sources */,
 				1C6447CB16C7DA3000654781 /* CSAppDelegate.m in Sources */,
-				1C6447DB16CA176B00654781 /* CSStepCenter.m in Sources */,
 				1C6447DE16CA186D00654781 /* CSProgram.m in Sources */,
 				1C6447E216CA2DD900654781 /* CSInterface.m in Sources */,
 				1C26562716D1E636006937C5 /* CSCodeParser.m in Sources */,
@@ -295,8 +448,23 @@
 				1C26562E16D20892006937C5 /* CSBlockView.m in Sources */,
 				1C26563216D24899006937C5 /* UIColor+CSColor.m in Sources */,
 				1C26563516D24C74006937C5 /* CSArrowView.m in Sources */,
-				1C26563C16D26235006937C5 /* CSSelectionSortInterface.m in Sources */,
 				1CDC7A7F16E1BA4000BFC269 /* CSStepperViewController.m in Sources */,
+				1C10930817095DBE0079D261 /* CSSortInterface.m in Sources */,
+				1C10930B1709C28F0079D261 /* CSSelectionSortInterface.m in Sources */,
+				1C1369BA17114BC6001766C4 /* CSMemModel.m in Sources */,
+				1C1369BD1711B763001766C4 /* CSStack.m in Sources */,
+				1C1369C11711BFB4001766C4 /* PZHNExpandableTableView.m in Sources */,
+				1C1328501712581F00A472FB /* CSMemViewController.m in Sources */,
+				1C132853171297F900A472FB /* CSStackCell.m in Sources */,
+				1C0E700717153EDF008FA655 /* CSClusteredBlockView.m in Sources */,
+				1C0E700B17154EB6008FA655 /* CSCharPointerArrayInterface.m in Sources */,
+				1C0E70131715847A008FA655 /* CSConsoleView.m in Sources */,
+				1C10730217182F1B00CDC0A5 /* CSCommentView.m in Sources */,
+				1C1073051718349400CDC0A5 /* CSUtils.m in Sources */,
+				1C1073081719210100CDC0A5 /* CSCollectionViewController.m in Sources */,
+				1C10730D171BBA2600CDC0A5 /* CSStringSortInterface.m in Sources */,
+				1C107313171D3E7500CDC0A5 /* NSString+Separator.m in Sources */,
+				1C8996F01744B91C00975237 /* CSArrayPointer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,10 +541,14 @@
 		1C6447D516C7DA3000654781 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gong Yan (L7X4FYWPEE)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CSStepper/CSStepper-Prefix.pch";
 				INFOPLIST_FILE = "CSStepper/CSStepper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C83D19AF-4017-4A4A-AF96-F897BF4E9374";
+				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -384,10 +556,14 @@
 		1C6447D616C7DA3000654781 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gong Yan (L7X4FYWPEE)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CSStepper/CSStepper-Prefix.pch";
 				INFOPLIST_FILE = "CSStepper/CSStepper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C83D19AF-4017-4A4A-AF96-F897BF4E9374";
+				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

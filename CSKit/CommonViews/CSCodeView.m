@@ -9,12 +9,17 @@
 #import "CSCodeView.h"
 #import <CoreText/CoreText.h>
 
+#define HORIZONTAL_MORE(p) ABS(p.x) > 1.2*ABS(p.y)
+
+#define HORIZONTAL_TO_RIGHT(p) (p.x > 0 && HORIZONTAL_MORE(p))
+#define HORIZONTAL_TO_LEFT(p) (p.x < 0 && HORIZONTAL_MORE(p))
+
 static inline NSDictionary *CSCodeDefaultAttributes()
 {
     NSMutableDictionary *mutableAttributes = [NSMutableDictionary dictionary];
     UIFont *uiFont = [UIFont systemFontOfSize:13.0];
-    CTFontRef font = CTFontCreateWithName((CFStringRef)uiFont.fontName, 14.0, NULL);
-    [mutableAttributes setObject:(id)font forKey:(NSString *)kCTFontAttributeName];
+    CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)uiFont.fontName, 14.0, NULL);
+    [mutableAttributes setObject:(__bridge id)font forKey:(NSString *)kCTFontAttributeName];
     CFRelease(font);
     
     [mutableAttributes setObject:(id)[UIColor blackColor].CGColor forKey:(NSString *)kCTForegroundColorAttributeName];
@@ -29,7 +34,7 @@ static inline NSDictionary *CSCodeDefaultAttributes()
         {.spec  = kCTParagraphStyleSpecifierLineSpacing, .valueSize = sizeof(CGFloat), .value = (const void*)&leading}
     };
     CTParagraphStyleRef paragraphSyle = CTParagraphStyleCreate(paragraphSettings, 3);
-    [mutableAttributes setObject:(id)paragraphSyle forKey:(NSString *)kCTParagraphStyleAttributeName];
+    [mutableAttributes setObject:(__bridge id)paragraphSyle forKey:(NSString *)kCTParagraphStyleAttributeName];
     CFRelease(paragraphSyle);
     
     return [NSDictionary dictionaryWithDictionary:mutableAttributes];
@@ -40,6 +45,9 @@ static inline NSDictionary *CSCodeDefaultAttributes()
     NSMutableAttributedString *_mutableAttributedString;
     CTFramesetterRef _frameSetter;
 }
+
+@property (strong, nonatomic) NSMutableAttributedString *originMutableAttributedString;
+
 @end
 
 @implementation CSCodeView
@@ -47,8 +55,6 @@ static inline NSDictionary *CSCodeDefaultAttributes()
 - (void)dealloc
 {
     if (_frameSetter) CFRelease(_frameSetter);
-    
-    [super dealloc];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -65,9 +71,8 @@ static inline NSDictionary *CSCodeDefaultAttributes()
     if ([attrString isEqualToAttributedString:_mutableAttributedString]) return;
     if (_frameSetter) CFRelease(_frameSetter);
     
-    if (_mutableAttributedString) [_mutableAttributedString release];
     _mutableAttributedString = [attrString mutableCopy];
-    _frameSetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_mutableAttributedString);
+    _frameSetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_mutableAttributedString);
 }
 
 - (void)setText:(NSString *)text configureWithBlock:(void (^)(NSMutableAttributedString *))block
@@ -76,8 +81,8 @@ static inline NSDictionary *CSCodeDefaultAttributes()
     
     if (block) block(attrString);
     
+    self.originMutableAttributedString = attrString;
     [self prepareForFrameSetterWithAttributedString:attrString];
-    [attrString release];
 }
 
 - (CGFloat)suggestedTextHeight
@@ -89,14 +94,15 @@ static inline NSDictionary *CSCodeDefaultAttributes()
 - (void)highlightTextInRange:(NSRange)range
 {
     [self _addAttribute:(NSString *)kCTForegroundColorAttributeName value:(id)[UIColor redColor].CGColor range:range];
+    [self setNeedsDisplay];
 }
 
 - (void)_addAttribute:(NSString *)attribute value:(id)v range:(NSRange)r
 {
-    NSMutableAttributedString *attrString = [_mutableAttributedString mutableCopy];
+    NSMutableAttributedString *attrString = [self.originMutableAttributedString mutableCopy];
     [attrString addAttribute:attribute value:v range:r];
+    
     [self prepareForFrameSetterWithAttributedString:attrString];
-    [attrString release];
 }
 
 - (void)drawRect:(CGRect)rect

@@ -14,12 +14,6 @@
 
 @implementation CSBlockView
 
-- (void)dealloc
-{
-    if (_text) [_text release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -34,7 +28,6 @@
 
 - (void)setText:(NSString *)text
 {
-    if (_text) [_text release];
     if (!text) {
         _text = nil;
         return;
@@ -61,16 +54,10 @@
     if (!animated)
         [self setStatus:status];
     else {
-        CABasicAnimation *colorAnimation = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
-        colorAnimation.duration = 0.3;
-        colorAnimation.fromValue = (id)[self _colorWithStatus:self.status].CGColor;
-        colorAnimation.toValue = (id)[self _colorWithStatus:status].CGColor;
-        colorAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-        
-        [CATransaction begin];
-        [CATransaction setCompletionBlock:^{[self setStatus:status];}];
-        [self.layer addAnimation:colorAnimation forKey:@"colorAnimation"];
-        [CATransaction commit];
+        _status = status;
+//        [CATransaction setAnimationDuration:1.0];
+        self.layer.backgroundColor = [self _colorWithStatus:self.status].CGColor;
+//        [CATransaction setAnimationDuration:0.5];
     }
 }
 
@@ -101,9 +88,17 @@
 {
     // Drawing code
     [[UIColor blackColor] set];
-    if (_text)
-//        [_text drawInRect:CGRectInset(self.bounds, -0.2*self.bounds.size.width, -0.2*self.bounds.size.height) withFont:[UIFont boldSystemFontOfSize:16.0]];
-        [_text drawAtPoint:CGPointMake(10.0, 10.0) forWidth:100.0 withFont:[UIFont systemFontOfSize:22.0] lineBreakMode:NSLineBreakByCharWrapping];
+    if (_text) {
+        CGRect rect = CGRectInset(self.bounds, 0.15*self.bounds.size.width, 0.35*self.bounds.size.height);
+        
+        CGSize textSize = [_text sizeWithFont:[UIFont boldSystemFontOfSize:18.0]];
+        
+        if (CGRectGetHeight(rect) < textSize.height) {
+            rect = self.bounds;
+        }
+        
+        [_text drawInRect:rect withFont:[UIFont boldSystemFontOfSize:18.0] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentCenter];
+    }
 }
 
 

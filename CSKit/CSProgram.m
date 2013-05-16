@@ -9,81 +9,288 @@
 #import "CSProgram.h"
 #import "CSCodeParser.h"
 
+#define MAX_INDEXPATH_LENGTH 10
+
 @interface CSProgram ()
 {
-    NSUInteger _currentStep;
-    NSMutableArray *_necessarySnippets;
+    BOOL _finished;
 }
-@property (nonatomic, retain) CSCodeView *codeView;
+@property (strong, nonatomic) NSArray *snippetsArray;
+@property (strong, nonatomic) NSMutableArray *executedSnippetStack;
+
+@property (strong, nonatomic) NSMutableArray *scopeStack;
+@property (strong, nonatomic, readwrite) NSDictionary *currentLoopInfo;
+
+@property (strong, nonatomic, readwrite) NSIndexPath *currentIndexPath;
+@property (strong, nonatomic) NSIndexPath *mainIndexPath;
+@property (strong, nonatomic, readwrite) NSIndexPath *nextIndexPath;
+@property (strong, nonatomic, readonly) CSSnippet *nextSnippet;
+
 @end
 
 @implementation CSProgram
 
-- (void)dealloc
-{
-    [_codeText release];
-    [_necessarySnippets release];
-    
-    [super dealloc];
-}
-
-- (CSSnippet *)_snippetWithIndexPath:(NSIndexPath *)indexPath totalArray:(NSArray *)array;
-{
-    NSUInteger indices[[indexPath length]];
-    [indexPath getIndexes:indices];
-    
-    NSUInteger itr = 0;
-    CSSnippet *snippet = [array objectAtIndex:indices[itr++]];
-    while (itr < [indexPath length]) {
-        snippet = [snippet.subSnippets objectAtIndex:indices[itr]];
-        itr++;
-    }
-    
-    return snippet;
-}
-
-- (instancetype)initWithCodeText:(NSString *)codeText indexPaths:(NSArray *)indexPaths
+- (id)init
 {
     if (self = [super init]) {
-        _codeText = [codeText copy];
-        CSCodeParser *parser = [[CSCodeParser alloc] init];
-        NSArray *totalSnippetsArray = [parser snippetsArrayByString:codeText];
-        [parser release];
-        
-        _necessarySnippets = [[NSMutableArray alloc] init];
-        for (NSIndexPath *indexPath in indexPaths)
-            [_necessarySnippets addObject:[self _snippetWithIndexPath:indexPath totalArray:totalSnippetsArray]];
-        
-        _currentStep = 0;
+        self.executedSnippetStack = [[NSMutableArray alloc] init];
+        self.scopeStack = [[NSMutableArray alloc] initWithCapacity:5];
     }
-    
     return self;
 }
 
-- (void)acceptCodeView:(CSCodeView *)codeView
++ (instancetype)sharedProgram
 {
-    self.codeView = codeView;
+    static dispatch_once_t once;
+    static CSProgram *instance;
+    dispatch_once(&once, ^ { instance = [[CSProgram alloc] init]; });
+    return instance;
 }
 
-- (void)nextStep
+- (void)setCodeView:(CSCodeView *)codeView
 {
-    if ([self hasNext]) {
-        self.currentRange = ((CSSnippet *)[_necessarySnippets objectAtIndex:++_currentStep]).textRange;
-        [self.codeView highlightTextInRange:self.currentRange];
+    _codeView = codeView;
+    [_codeView setText:self.codeText configureWithBlock:nil];
+}
+
+- (void)reloadProgram:(kCSProgramCase *)aCase
+                error:(NSError *__autoreleasing *)error
+{
+    _finished = NO;
+    self.codeText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:aCase ofType:@"txt"] encoding:NSUTF8StringEncoding error:error];
+    
+    if (error) return;
+    
+    CSCodeParser *parser = [[CSCodeParser alloc] init];
+    self.snippetsArray = [parser snippetsArrayByString:self.codeText];
+    self.mainIndexPath = [CSUtils mainIndexPathWithCase:aCase];
+}
+
+- (CSSnippet *)nextSnippet
+{
+    if (self.nextIndexPath == nil) return nil;
+    
+    return [self _snippetAtIndexPath:self.nextIndexPath];
+}
+
+- (CSSnippet *)_snippetAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.length == 0) return nil;
+    
+    NSUInteger length = indexPath.length;
+    NSUInteger indices[MAX_INDEXPATH_LENGTH];
+    [indexPath getIndexes:indices];
+    
+    CSSnippet *tempSnippet = nil;
+    if (indices[0] < [self.snippetsArray count])
+        tempSnippet = self.snippetsArray[indices[0]];
+    
+    for (NSUInteger i = 1; i < length; i++) {
+        if ([tempSnippet.subSnippets count] >= indices[i] + 1) {
+            tempSnippet = tempSnippet.subSnippets[indices[i]];
+        }
+        else {
+            tempSnippet = nil;
+            break;
+        }
     }
+    
+    return tempSnippet;
+}
+
+- (NSIndexPath *)_seriallyNextIndexPathAfterIndexPath:(NSIndexPath *)indexPath
+{
+    if (!indexPath) return nil;
+    
+    NSUInteger length = indexPath.length;
+    NSUInteger indices[MAX_INDEXPATH_LENGTH];
+    [indexPath getIndexes:indices];
+    
+    indices[length - 1]++;
+    
+    return [NSIndexPath indexPathWithIndexes:indices length:length];
+}
+
+- (NSIndexPath *)_firstChildIndexPath
+{
+    if (!self.currentIndexPath) return nil;
+    
+    return [self.currentIndexPath indexPathByAddingIndex:0];
+}
+
+- (NSIndexPath *)_firstSiblingIndexPath
+{
+    if (!self.currentIndexPath) return nil;
+    
+    NSUInteger length = self.currentIndexPath.length;
+    NSUInteger indices[MAX_INDEXPATH_LENGTH];
+    [self.currentIndexPath getIndexes:indices];
+    
+    indices[length - 1] = 0;
+    
+    return [NSIndexPath indexPathWithIndexes:indices length:length];
+}
+
+- (BOOL)_isLastSnippetInScope
+{
+    if (![self.scopeStack count]) return YES;
+    
+    NSDictionary *loopInfo = [self.scopeStack lastObject];
+    NSIndexPath *scopeIndexPath = loopInfo[@"indexPath"];
+    CSSnippet *snippet = [self _snippetAtIndexPath:scopeIndexPath];
+    
+    NSUInteger length = self.currentIndexPath.length;
+    NSUInteger indices[MAX_INDEXPATH_LENGTH];
+    [self.currentIndexPath getIndexes:indices];
+    
+    if (indices[length - 1] >= [snippet.subSnippets count] - 1) return YES;
+    else return NO;
+}
+
+- (void)_highlightSnippetAtIndexPath:(NSIndexPath *)indexPath pushToStack:(BOOL)pushFlag
+{
+    self.currentIndexPath = indexPath;
+    CSSnippet *currentSnippet = self.nextSnippet;
+    [self.codeView highlightTextInRange:currentSnippet.textRange];
+    
+    if (pushFlag) [self.executedSnippetStack addObject:currentSnippet];
+}
+
+- (void)beginNewScopeWithLoopCount:(NSInteger)loopCount
+{
+    if (loopCount == -1 || _finished) return;
+    
+    CSSnippet *snippet = [self _snippetAtIndexPath:self.currentIndexPath];
+    
+    if (![snippet.subSnippets count]) return;
+    
+    NSDictionary *loopInfo = @{ @"total" : [NSNumber numberWithUnsignedInteger:loopCount], @"current" : @1, @"indexPath" : self.currentIndexPath};
+    
+    [self.scopeStack addObject:loopInfo];
+    
+    self.nextIndexPath = [self _firstChildIndexPath];
+}
+
+- (void)beginNewScopeAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath == nil) return;
+    
+    CSSnippet *snippet = [self _snippetAtIndexPath:indexPath];
+    
+    if (![snippet.subSnippets count]) return;
+    
+    NSDictionary *loopInfo = @{@"total": @1, @"current" : @1, @"indexPath" : self.currentIndexPath};
+    
+    [self.scopeStack addObject:loopInfo];
+    self.nextIndexPath = indexPath;
+}
+
+- (BOOL)isAtTheLoopBeginning
+{
+    if (_finished == NO)
+        return self.currentLoopInfo ? NO : YES;
+    else
+        return NO;
+}
+
+- (void)_analyzeCurrentContextBeginingWithIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.currentIndexPath == nil) {
+        self.nextIndexPath = self.mainIndexPath;
+        return;
+    }
+    
+    if (self.currentLoopInfo) {
+        // self.currentLoopInfo != nil means we've just come out of a loop scope, and hanging on loop check.
+        NSInteger currentCount = [self.currentLoopInfo[@"current"] integerValue];
+        NSInteger totalCount = [self.currentLoopInfo[@"total"] integerValue];
+        NSIndexPath *currentIndexPath = self.currentLoopInfo[@"indexPath"];
+        self.currentLoopInfo = nil;
+        
+        if (++currentCount > totalCount) {
+            [self _analyzeCurrentContextBeginingWithIndexPath:self.currentIndexPath];
+        }
+        else {
+            NSIndexPath *firstChildIndexPath = [self _firstChildIndexPath];
+            CSSnippet *firstChildSnippet = [self _snippetAtIndexPath:firstChildIndexPath];
+            
+            if (firstChildSnippet)
+                self.nextIndexPath = firstChildIndexPath;
+            
+            NSDictionary *loopInfo = @{@"current": [NSNumber numberWithInteger:currentCount],
+                                       @"total" : [NSNumber numberWithInteger:totalCount],
+                                       @"indexPath" : currentIndexPath};
+            [self.scopeStack addObject:loopInfo];
+        }
+    }
+    else {
+        // self.currentLoopInfo = nil means we're in a current scope.
+        
+        if ([self.scopeStack count] == 0) {
+            _finished = YES;
+            self.nextIndexPath = nil;
+            return;
+        }
+        
+        NSIndexPath *nextSiblingIndexPath = [self _seriallyNextIndexPathAfterIndexPath:indexPath];
+        CSSnippet *nextSiblingSnippet = [self _snippetAtIndexPath:nextSiblingIndexPath];
+        
+        if (nextSiblingSnippet && !_finished)
+            self.nextIndexPath = nextSiblingIndexPath;
+        else if (!nextSiblingSnippet) {
+            // if nextSiblingSnippet is nil, we've got the edge of current scope.
+            
+            NSDictionary *loopInfo = [self.scopeStack lastObject];
+            NSInteger totalCount = [loopInfo[@"total"] integerValue];
+            NSIndexPath *parentIndexPath = loopInfo[@"indexPath"];
+            [self.scopeStack removeLastObject];
+            
+            if (totalCount == 0) {
+                // for `if` case, nextIndexPath is based on next recursion result on parentIndexPath
+                [self _analyzeCurrentContextBeginingWithIndexPath:parentIndexPath];
+            }
+            else if (totalCount > 0) {
+                // for loop case, nextIndexPath is parentIndexPath
+                self.nextIndexPath = parentIndexPath;
+                self.currentLoopInfo = loopInfo;
+            }
+        }
+    }
+}
+
+- (BOOL)nextStep
+{
+    // check if self.nextSnippet has been assigned by beginNewScope...
+    if (_finished) {
+        // EOF
+        return NO;
+    }
+    
+    if (self.nextSnippet == nil) {
+        // get a correct nextIndexPath and nextSnippet
+        [self _analyzeCurrentContextBeginingWithIndexPath:self.currentIndexPath];
+    }
+    
+    if (self.nextSnippet) {
+        [self _highlightSnippetAtIndexPath:self.nextIndexPath pushToStack:YES];
+        self.nextIndexPath = nil;
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)lastStep
 {
-    if (_currentStep > 0) {
-        self.currentRange = ((CSSnippet *)[_necessarySnippets objectAtIndex:--_currentStep]).textRange;
-        [self.codeView highlightTextInRange:self.currentRange];
-    }
+    
 }
 
-- (BOOL)hasNext
+- (BOOL)hasChildrenOfCodeAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [_necessarySnippets count] - 1 - _currentStep;
+    CSSnippet *snippet = (CSSnippet *)[self _snippetAtIndexPath:indexPath];
+    
+    if (snippet == nil || [snippet.subSnippets count] == 0) return NO;
+    return YES;
 }
 
 @end

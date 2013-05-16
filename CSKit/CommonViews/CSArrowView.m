@@ -16,9 +16,26 @@
 
 - (CGRect)frameContainsArrowFromPoint:(CGPoint)fromPoint toPoint:(CGPoint)toPoint
 {
-    if (fromPoint.x - toPoint.x == 0)
-        return CGRectMake(toPoint.x - 10.0, toPoint.y, 20.0, ABS(fromPoint.y - toPoint.y));
-    return CGRectMake(MIN(fromPoint.x, toPoint.x), MIN(fromPoint.y, toPoint.y), ABS(toPoint.x - fromPoint.x), ABS(toPoint.y - fromPoint.y));
+    if (fromPoint.x - toPoint.x == 0) {
+        // these configure is only for little arrows in sort example.
+        CGFloat x = toPoint.x - 25.0;
+        CGFloat y = fromPoint.y > toPoint.y ? (fromPoint.y - 1.1*ABS(fromPoint.y - toPoint.y)) : fromPoint.y - 20.0;
+        CGFloat w = 50.0;
+        CGFloat h = 2.0 * ABS(fromPoint.y - toPoint.y);
+        
+//        return CGRectMake(toPoint.x - 10.0, fromPoint.y > toPoint.y ? fromPoint.y -  ABS(fromPoint.y - toPoint.y) : fromPoint.y, 20.0, ABS(fromPoint.y - toPoint.y));
+        return CGRectMake(x, y, w, h);
+    }
+    
+    CGFloat x = MIN(fromPoint.x, toPoint.x);
+    CGFloat y = MIN(fromPoint.y, toPoint.y);
+    CGFloat h = ABS(toPoint.y - fromPoint.y);
+    if (fromPoint.y - toPoint.y == 0) {
+        y = y - 15.0;
+        h = 30.0;
+    }
+    
+    return CGRectMake(x, y, ABS(toPoint.x - fromPoint.x) + 5.0, h);
 }
 
 - (instancetype)initFromPoint:(CGPoint)fromPoint toPoint:(CGPoint)toPoint
@@ -44,6 +61,9 @@
     
     CGRect newFrame = [self frameContainsArrowFromPoint:newFromPoint toPoint:newToPoint];
     
+    _fromPoint = newFromPoint;
+    _toPoint = newToPoint;
+    
     if (animated) {
         [UIView animateWithDuration:1.0 animations:^(){self.frame = newFrame;}];
     }
@@ -52,15 +72,40 @@
     }
 }
 
+- (void)setFromPoint:(CGPoint)fromPoint toPoint:(CGPoint )toPoint animated:(BOOL)animated
+{
+    _fromPoint = fromPoint;
+    _toPoint = toPoint;
+    
+    CGRect newFrame = [self frameContainsArrowFromPoint:fromPoint toPoint:toPoint];
+    
+    if (animated) {
+        [UIView animateWithDuration:1.0 animations:^(){self.frame = newFrame;}];
+    }
+    else {
+        self.frame = newFrame;
+    }
+    // need?
+    [self setNeedsDisplay];
+}
+
+- (void)setArrowName:(NSString *)arrowName
+{
+    _arrowName = [arrowName copy];
+    
+    CGSize size = [arrowName sizeWithFont:[UIFont systemFontOfSize:16.0]];
+    self.frame = CGRectMake(_toPoint.x - (size.width + 15.0) / 2.0, self.frame.origin.y, size.width + 15.0, self.bounds.size.height);
+    
+    [self setNeedsDisplay];
+}
+
 - (void)setLineColor:(UIColor *)lineColor
 {
-    if (_lineColor) [_lineColor release];
     if (!lineColor) {
-        _lineColor = [UIColor blackColor];
-        return;
+        lineColor = [UIColor blackColor];
     }
     
-    _lineColor = [lineColor retain];
+    _lineColor = lineColor;
     [self setNeedsDisplay];
 }
 
@@ -74,8 +119,10 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGPoint fromPointInSelfSystem = CGPointMake(_fromPoint.x-self.frame.origin.x, _fromPoint.y-self.frame.origin.y);
-    CGPoint toPointInSelfSystem = CGPointMake(_toPoint.x-self.frame.origin.x, _toPoint.y-self.frame.origin.y);
+//    CGPoint fromPointInSelfSystem = CGPointMake(_fromPoint.x-self.frame.origin.x, _fromPoint.y-self.frame.origin.y);
+    CGPoint fromPointInSelfSystem = [self.superview convertPoint:_fromPoint toView:self];
+//    CGPoint toPointInSelfSystem = CGPointMake(_toPoint.x-self.frame.origin.x, _toPoint.y-self.frame.origin.y);
+    CGPoint toPointInSelfSystem = [self.superview convertPoint:_toPoint toView:self];
 
     CGContextSetStrokeColorWithColor(context, _lineColor.CGColor);
     CGContextSetLineWidth(context, _lineWidth);
@@ -98,6 +145,17 @@
     CGContextAddLineToPoint(context, leafPoint_2.x, leafPoint_2.y);
     
     CGContextStrokePath(context);
+    
+    if (self.arrowName) {
+        CGRect rect;
+        if (fromPointInSelfSystem.y > toPointInSelfSystem.y)
+            rect = CGRectMake(0.0, fromPointInSelfSystem.y, self.bounds.size.width, self.bounds.size.height - (fromPointInSelfSystem.y - toPointInSelfSystem.y));
+        else {
+            rect = CGRectMake(0.0, 4.0, self.bounds.size.width, self.bounds.size.height - (toPointInSelfSystem.y - fromPointInSelfSystem.y));
+        }
+//        [self.arrowName drawInRect:rect withFont:[UIFont systemFontOfSize:14.0]];
+        [self.arrowName drawInRect:rect withFont:[UIFont systemFontOfSize:16.0] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentCenter];
+    }
 }
 
 @end
