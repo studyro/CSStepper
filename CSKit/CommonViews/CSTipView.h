@@ -10,4 +10,10 @@
 
 @interface CSTipView : UIView
 
+@property (strong, nonatomic, readonly) UILabel *textLabel;
+@property (assign, nonatomic) CGFloat maxWidth; // default 433.0
+
+- (void)showWithText:(NSString *)text atCenter:(CGPoint)centerPoint animated:(BOOL)animated;
+- (void)hideAnimted:(BOOL)animated;
+
 @end

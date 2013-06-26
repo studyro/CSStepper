@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+#define N 10
+
+struct Person
+{
+	char name[20];
+	int count;
+}
+
+void main()
+{
+	struct person leader[4] = {{"wang", 0}, 
+							  {"zhang", 0}, 
+							  {"zhou", 0}, 
+							  {"gao", 0}};
+	char name[20], i, j;
+	
+	for (i = 0; i < N; i++)
+	{
+		gets(name);
+		for(j = 0; j < 4; j++)
+		{
+			if(strcmp(name, leader[j].mame)==0)
+			{
+				leader[j].count++;
+				break;
+			}
+		}
+	}
+	
+	printf("\n");
+	for(j = 0; j < 4; j++)
+	{
+		printf("%s:%d\n", leader[j].name, leader[j].count);
+	}
+}

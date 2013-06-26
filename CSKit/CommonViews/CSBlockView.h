@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    BVStatusInactive = 0,
-    BVStatusActive = 1,
-    BVStatusToBeActive = 2
+    BVStatusNormal = 0,
+    BVStatusInactive = 1,
+    BVStatusActive = 2,
+    BVStatusToBeActive = 3
 }BVStatus;
 
 @interface CSBlockView : UIView
@@ -24,6 +25,8 @@ typedef enum {
 @property (nonatomic, assign) __block BVStatus status;
 
 @property (nonatomic, assign) CGFloat borderWidth;
+
+@property (nonatomic, strong) UIColor *borderColor;
 
 - (void)setStatus:(BVStatus)status animated:(BOOL)animated;
 

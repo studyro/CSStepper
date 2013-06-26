@@ -19,7 +19,7 @@
 
 @end
 
-NSString *const kCSStackNameMain = @"kCSStackNameMain";
+NSString *const kCSStackNameMain = @"main函数栈";
 
 NSString *const CSMemModelDidChangedNotification = @"CSMemModelDidChangedNotification";
 
@@ -68,6 +68,11 @@ NSString *const kCSVariableValueUnassigned = @"kCSVariableValueUnassigned";
 
 #pragma mark - Stack-related Methods
 
++ (NSDictionary *)stackSaverPointerInfo
+{
+    return @{@"保留现场指针": @""};
+}
+
 - (void)openStackWithName:(NSString *)name collapseFormerVariables:(BOOL)shouldCollapse
 {
     if (shouldCollapse) {
@@ -79,6 +84,7 @@ NSString *const kCSVariableValueUnassigned = @"kCSVariableValueUnassigned";
     
     CSStack *stack = [[CSStack alloc] initWithName:name];
     [self.stackArray addObject:stack];
+    [stack.variables addObject:[[self class] stackSaverPointerInfo]];
     
     if (!_inTransaction) {
         [[NSNotificationCenter defaultCenter] postNotificationName:CSMemModelDidChangedNotification object:self userInfo:@{@"type": @"stack"}];

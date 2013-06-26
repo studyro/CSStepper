@@ -146,12 +146,12 @@
         _isNextStepBatch = NO;
         _isBatchExecuting = YES;
         
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [self setBackgroundViewGesturesEnable:NO];
         [self nextBatchStepsOfCount:self.number * 2 - 1 timeInterval:0.5 stepBlock:^(NSUInteger stepCount){
             [self nextStep];
         } completionBlock:^{
             _isBatchExecuting = NO;
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            [self setBackgroundViewGesturesEnable:YES];
         }];
     }
     
@@ -260,7 +260,7 @@
         [self setBlockViewStatus:BVStatusToBeActive atIndex:_varJ];
         [self setBlockViewStatus:BVStatusToBeActive atIndex:_counterI];
         
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [self setBackgroundViewGesturesEnable:NO];
         
         [self nextBatchStepsOfCount:2 timeInterval:1.0 stepBlock:^(NSUInteger stepCount){
             [self nextStep];
@@ -272,7 +272,7 @@
             
             [self.arrowK removeFromSuperview];
             self.arrowK = nil;
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            [self setBackgroundViewGesturesEnable:YES];
         }];
     }
     
@@ -322,13 +322,13 @@
             self.consoleView.alpha = 1.0;
         }];
         
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [self setBackgroundViewGesturesEnable:NO];
         
         [self nextBatchStepsOfCount:(self.number) * 2 - 1 timeInterval:1.5 stepBlock:^(NSUInteger currentStep){
             [self nextStep];
         } completionBlock:^{
             _isBatchExecuting = NO;
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            [self setBackgroundViewGesturesEnable:YES];
         }];
     }
     

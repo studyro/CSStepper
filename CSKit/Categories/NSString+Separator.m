@@ -12,6 +12,8 @@
 
 - (NSArray *)separatedCharStringArrayWithTail:(BOOL)withTail
 {
+    if (self.length == 0) return nil;
+    
     NSMutableArray *chars = [[NSMutableArray alloc] init];
     NSRange unitRange = {0, 1};
     

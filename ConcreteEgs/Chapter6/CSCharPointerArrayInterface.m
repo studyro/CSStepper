@@ -248,7 +248,7 @@
                 [array addObject:@{[NSString stringWithFormat:@"string[%u][]", i]: [[weakSelf class] strModelArrayWithIndex:i]}];
             }
             
-            [[CSMemModel sharedMemModel] pushValue:array named:@"string[][]"];
+            [[CSMemModel sharedMemModel] setValueInStack:array named:@"string[][]"];
         }];
     }
     else if (childNodes[0] == 1) {
@@ -263,11 +263,11 @@
                 [valueArray addObject:@{blockView.text: @"残值"}];
             }
             
-            [[CSMemModel sharedMemModel] pushValue:valueArray named:@"pstr[]"];
+            [[CSMemModel sharedMemModel] setValueInStack:valueArray named:@"pstr[]"];
         }];
     }
     else if (childNodes[0] == 2) {
-        [[CSMemModel sharedMemModel] pushValue:@"残值" named:@"a"];
+        // do nothing
     }
 }
 
@@ -285,7 +285,7 @@
         CSArrowView *arrowView = self.ptrToStrArrowViews[_counterA];
         arrowView.hidden = NO;
         
-        [[CSMemModel sharedMemModel] setValueInStack:[[self class] ptrArrayLoopAtIndex:_counterA] named:@"pstr[]"];
+        [[CSMemModel sharedMemModel] setValueInStack:[[self class] ptrArrayLoopAtIndex:_counterA] named:@"pstr"];
     }
 }
 
@@ -301,12 +301,12 @@
             self.consoleView.alpha = 1.0;
         }];
         
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [self setBackgroundViewGesturesEnable:NO];
         [self nextBatchStepsOfCount:(self.stringNumber - 1) * 2 - 1 timeInterval:1.5 stepBlock:^(NSUInteger currentStep){
             [self nextStep];
         } completionBlock:^{
             _isBatchExecuting = NO;
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            [self setBackgroundViewGesturesEnable:YES];
         }];
     }
     
@@ -326,6 +326,18 @@
 
 #pragma mark - Public Interface
 
+- (void)pushNewStackNamed:(NSString *)stackName shouldCollapse:(BOOL)shouldCollapse
+{
+    [[CSMemModel sharedMemModel] openStackWithName:stackName collapseFormerVariables:shouldCollapse];
+    if ([stackName isEqualToString:kCSStackNameMain]) {
+        [[CSMemModel sharedMemModel] beginTransaction];
+        [[CSMemModel sharedMemModel] pushValue:[self stackVariableArrayWithArray:nil name:@"string" count:4] named:@"string"];
+        [[CSMemModel sharedMemModel] pushValue:[self stackVariableArrayWithArray:nil name:@"ptr" count:4] named:@"ptr"];
+        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"a"];
+        [[CSMemModel sharedMemModel] commitTransaction];
+    }
+}
+
 - (void)tryToBeginNewScope
 {
     NSIndexPath *currentIndexPath = [CSProgram sharedProgram].currentIndexPath;
@@ -335,7 +347,6 @@
     
     if ([[CSProgram sharedProgram] isAtTheLoopBeginning]) {
         if (nodeSecond == NSNotFound) {
-            [[CSMemModel sharedMemModel] openStackWithName:kCSStackNameMain collapseFormerVariables:YES];
             loopCount = 0;
         }
         else if (nodeSecond == 3 && nodeThird == NSNotFound)
@@ -357,6 +368,9 @@
     NSUInteger nodeSecond = [currentIndexPath indexAtPosition:1], nodeThird = [currentIndexPath indexAtPosition:2];
     
     NSUInteger childNodes[2] = {nodeSecond, nodeThird};
+    if (nodeSecond == NSNotFound) {
+        [self pushNewStackNamed:kCSStackNameMain shouldCollapse:NO];
+    }
     if (nodeSecond <= 2) {
         [self _executeSimpleAssigningWithChildNodes:childNodes];
     }

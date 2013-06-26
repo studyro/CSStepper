@@ -11,6 +11,7 @@
 struct ShouldHandleKeys {
     NSUInteger inBracketCount;
     BOOL isBehindEqual;
+//    BOOL isBehindRightSquareBracket;
 };
 
 @interface CSCodeParser()
@@ -31,6 +32,7 @@ struct ShouldHandleKeys {
     if (self = [super init]) {
         _shouldHandleKeys.inBracketCount = 0;
         _shouldHandleKeys.isBehindEqual = NO;
+//        _shouldHandleKeys.isBehindRightSquareBracket = NO;
         
         _snippetsTree = [[NSMutableArray alloc] initWithCapacity:3];
         
@@ -117,7 +119,12 @@ struct ShouldHandleKeys {
 
 - (BOOL)_isIgnorableSeperatorWithString:(NSString *)character
 {
-    BOOL isIgnorable;
+    BOOL isIgnorable = NO;
+    /*
+    if ([character isEqualToString:@"}"]) {
+        _shouldHandleKeys.isBehindRightSquareBracket = YES;
+    }*/
+    
     if ([@"()=" rangeOfString:character].location != NSNotFound) {
         if ([character isEqualToString:@"("])
             _shouldHandleKeys.inBracketCount++;
@@ -129,16 +136,24 @@ struct ShouldHandleKeys {
             else
                 _shouldHandleKeys.isBehindEqual = NO;
         }
+        
         isIgnorable = YES;
     }
     else {
-        isIgnorable = NO;
         if (_shouldHandleKeys.inBracketCount) {
             // any char in bracket shouldn't be regarded as separator
             isIgnorable = YES;
         }
         else {
             if ([character isEqualToString:@";"]) {
+                // first check if is a struct case.
+                /*
+                if (_shouldHandleKeys.isBehindRightSquareBracket && _shouldHandleKeys.isBehindEqual == NO) {
+                    isIgnorable = YES;
+                    // reset the flags
+                    _shouldHandleKeys.isBehindRightSquareBracket = NO;
+                }
+                */
                 // a ';' out of bracket will terminate an equal.
                 _shouldHandleKeys.isBehindEqual = NO;
             }
@@ -179,13 +194,13 @@ struct ShouldHandleKeys {
             while (isIgnorable) {
                 [_separatorScanner scanUpToCharactersFromSet:separatorSet intoString:NULL];
                 unitRange.location = [_separatorScanner scanLocation];
-                
                 character = [codeText substringWithRange:unitRange];
                 
                 isIgnorable = [self _isIgnorableSeperatorWithString:character];
                 if (![_separatorScanner isAtEnd] && isIgnorable)
                     [_separatorScanner setScanLocation:[_separatorScanner scanLocation] + 1];
             }
+            
             [self _handleScannerAccordingToSeparator:character];
         }
         else

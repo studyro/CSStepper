@@ -1,0 +1,31 @@
+#inlcude <stdio.h>
+#include <string.h>
+
+char * max_str(char p[][80], int n);
+
+void main()
+{
+	char strs[4][11] = {"abstract", 
+                    "professor",
+                    "awesome",
+                    "program"};
+						
+	char *pmax = max_str(strs, 4);
+	
+	printf("max:%s", pmax);
+}
+
+char * max_str(char p[][80], int n)
+{
+	int i;
+	char *pmax;
+	for (pmax=*p, i=1; i<n; i++)
+	{
+		if (strcmp(pmax, p[i]) < 0)
+		{
+			pmax = p[i];
+		}
+	}
+	
+	return pmax;
+}

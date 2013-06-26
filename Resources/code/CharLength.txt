@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+void main()
+{
+	char s[20];
+	char *p;
+	
+	printf("Enter a string (Less than 20 characters):\n");
+	scanf("%s", s);
+	p = s;
+	
+	while (*p != '\0')
+	{
+		p++;
+	}
+	
+	printf("The String Length:%d\n", p - s);
+}

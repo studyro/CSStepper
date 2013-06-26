@@ -27,15 +27,16 @@
                 error:(NSError **)error;
 
 - (void)beginNewScopeWithLoopCount:(NSInteger)loopCount;
-
 - (void)beginNewScopeAtIndexPath:(NSIndexPath *)indexPath;
 
-- (BOOL)isAtTheLoopBeginning;
+// for 'if' check get a false, skip to else.. or static defination.
+- (void)skipNextSeriallyLineOfCode;
 
+- (void)breakCurrentScopeInverselyAtIndex:(NSUInteger)idx;
+
+- (BOOL)isAtTheLoopBeginning;
 // step changing is called by interface logic.
 - (BOOL)nextStep;
-
-- (void)lastStep;
 
 - (BOOL)hasChildrenOfCodeAtIndexPath:(NSIndexPath *)indexPath;
 

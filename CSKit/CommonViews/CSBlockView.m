@@ -14,6 +14,15 @@
 
 @implementation CSBlockView
 
+- (id)init
+{
+    if (self = [super init]) {
+        CALayer *layer = self.layer;
+        layer.borderColor = [UIColor blackColor].CGColor;
+        layer.borderWidth = 2.0;
+    }
+    return self;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -43,6 +52,14 @@
     self.layer.borderWidth = borderWidth;
 }
 
+- (void)setBorderColor:(UIColor *)borderColor
+{
+    if (_borderColor != borderColor)
+        _borderColor = borderColor;
+    
+    self.layer.borderColor = borderColor.CGColor;
+}
+
 - (void)setStatus:(BVStatus)status
 {
     _status = status;
@@ -64,6 +81,10 @@
 - (UIColor *)_colorWithStatus:(BVStatus)status
 {
     switch (status) {
+        case BVStatusNormal:
+            return [UIColor whiteColor];
+            break;
+            
         case BVStatusInactive:
             return [UIColor grayColor];
             break;
@@ -89,9 +110,9 @@
     // Drawing code
     [[UIColor blackColor] set];
     if (_text) {
-        CGRect rect = CGRectInset(self.bounds, 0.15*self.bounds.size.width, 0.35*self.bounds.size.height);
-        
+//        CGRect rect = CGRectInset(self.bounds, 0.15*self.bounds.size.width, 0.35*self.bounds.size.height);
         CGSize textSize = [_text sizeWithFont:[UIFont boldSystemFontOfSize:18.0]];
+        CGRect rect = CGRectMake(0.0, self.bounds.size.height * 0.5 - textSize.height * 0.5, self.bounds.size.width, textSize.height);
         
         if (CGRectGetHeight(rect) < textSize.height) {
             rect = self.bounds;

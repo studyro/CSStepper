@@ -92,10 +92,12 @@ typedef enum {
 {
     [super viewDidLoad];
     
-    [[CSProgram sharedProgram] reloadProgram:kCSProgramCaseArrayPointer error:nil];
+    NSString *programCase = kCSProgramCaseStructElection;
+    
+    [[CSProgram sharedProgram] reloadProgram:programCase error:nil];
     [CSProgram sharedProgram].codeView = self.codeView;
     
-    self.interfaceHolder = [CSUtils interfaceWithCase:kCSProgramCaseArrayPointer];
+    self.interfaceHolder = [CSUtils interfaceWithCase:programCase];
     [self.interfaceHolder acceptBackgroundView:self.view];
 	[self.interfaceHolder construct];
     

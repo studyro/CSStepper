@@ -19,6 +19,10 @@ CGRect CGRectMakeWithBlockNumber(CGRect rect, NSUInteger idx, NSUInteger number)
     return CGRectMake(x, y, w, h);
 }
 
+@interface CSClusteredBlockView ()
+@property (nonatomic, strong) NSArray *indexesToHighLight;
+@end
+
 @implementation CSClusteredBlockView
 
 - (instancetype)initWithPartition:(NSUInteger)parts andFrame:(CGRect)frame
@@ -58,6 +62,34 @@ CGRect CGRectMakeWithBlockNumber(CGRect rect, NSUInteger idx, NSUInteger number)
     }
 }
 
+- (void)highlightBlockAtIndexes:(NSArray *)indexes
+{
+    self.indexesToHighLight = indexes;
+    
+    [self setNeedsDisplay];
+}
+
+- (void)recoverBlocks
+{
+    self.indexesToHighLight = nil;
+    
+    [self setNeedsDisplay];
+}
+
+- (BOOL)highlightArrayContainsIndex:(NSUInteger)index
+{
+    __block BOOL contains = NO;
+    [self.indexesToHighLight enumerateObjectsUsingBlock:^(NSNumber *n, NSUInteger idx, BOOL *stop){
+        NSUInteger idxToHighLight = [n unsignedIntegerValue];
+        if (index == idxToHighLight) {
+            contains = YES;
+            *stop = YES;
+        }
+    }];
+    
+    return contains;
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
@@ -65,6 +97,7 @@ CGRect CGRectMakeWithBlockNumber(CGRect rect, NSUInteger idx, NSUInteger number)
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextSetLineWidth(context, self.inlineWidth);
     
     CGFloat unitWidth = self.bounds.size.width / (CGFloat)self.partsNumber;
@@ -73,6 +106,20 @@ CGRect CGRectMakeWithBlockNumber(CGRect rect, NSUInteger idx, NSUInteger number)
         CGContextAddLineToPoint(context, unitWidth * (i+1), 0.0);
     }
     CGContextStrokePath(context);
+    for (NSUInteger i = 0; i < self.partsNumber; i++) {
+        CGFloat offsetWhileILargerThanZero = (i > 0) * 0.5 * self.inlineWidth;
+        CGRect unitRect = CGRectMake(i * unitWidth + offsetWhileILargerThanZero, 0.0, unitWidth - 0.5 * self.inlineWidth - offsetWhileILargerThanZero, self.bounds.size.height);
+        CGContextFillRect(context, unitRect);
+        
+        if ([self highlightArrayContainsIndex:i]) {
+            CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
+            
+            CGRect unitRect = CGRectMake(i * unitWidth, 0.0, unitWidth, self.bounds.size.height);
+            CGContextFillRect(context, unitRect);
+        }
+    }
+    
+//    CGContextFillPath(context);
     
     [[UIColor blackColor] set];
     if (self.textArray) {

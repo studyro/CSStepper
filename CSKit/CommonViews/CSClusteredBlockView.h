@@ -18,7 +18,8 @@
 
 - (instancetype)initWithPartition:(NSUInteger)parts andFrame:(CGRect)frame;
 
-
+- (void)highlightBlockAtIndexes:(NSArray *)indexes;
+- (void)recoverBlocks;
 
 // TODO : verticle / horizontal support
 

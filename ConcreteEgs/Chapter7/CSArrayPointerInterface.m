@@ -197,20 +197,11 @@
 {
     NSUInteger nodeSecond = nodes[1];
     
-    if (nodeSecond == 0) {
-        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"i"];
-    }
-    else if (nodeSecond == 1) {
-        [[CSMemModel sharedMemModel] beginTransaction];
-        [[CSMemModel sharedMemModel] pushValue:@[@{@"a[0]": kCSVariableValueUnassigned},
-         @{@"a[1]": kCSVariableValueUnassigned}, @{@"a[2]": kCSVariableValueUnassigned}, @{@"a[3]": kCSVariableValueUnassigned}] named:@"a[]"];
-        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"ap"];
-        [[CSMemModel sharedMemModel] commitTransaction];
-        
+    if (nodeSecond == 1) {
         [self showArrayBlocksAndLabels];
     }
     else if (nodeSecond == 2) {
-        [[CSMemModel sharedMemModel] pushValue:@"a" named:@"ap"];
+        [[CSMemModel sharedMemModel] setValueInStack:@"a" named:@"ap"];
         
         [self showApArrow];
         self.apBlockView.text = @"a";
@@ -242,6 +233,7 @@
                 [weakSelf.aContentArray addObject:text];
                 [weakSelf refreshArrayTextAtIndex:_countI];
                 [weakSelf dismissMaskView];
+                [[CSMemModel sharedMemModel] setValueInStack:[weakSelf stackVariableArrayWithArray:weakSelf.aContentArray name:@"a" count:weakSelf.number] named:@"a"];
             }];
             
             [self showMaskView];
@@ -264,12 +256,12 @@
             self.consoleView.alpha = 1.0;
         }];
         
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [self setBackgroundViewGesturesEnable:NO];
         [self nextBatchStepsOfCount:self.number * 2 - 1 timeInterval:1.5 stepBlock:^(NSUInteger currentStep){
             [self nextStep];
         } completionBlock:^{
             _isBatchExecuting = NO;
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+           [self setBackgroundViewGesturesEnable:YES];
         }];
     }
     
@@ -289,6 +281,20 @@
 
 #pragma mark - Public Interface
 
+- (void)pushNewStackNamed:(NSString *)stackName shouldCollapse:(BOOL)shouldCollapse
+{
+    [[CSMemModel sharedMemModel] openStackWithName:stackName collapseFormerVariables:shouldCollapse];
+    if ([stackName isEqualToString:kCSStackNameMain]) {
+        [[CSMemModel sharedMemModel] beginTransaction];
+        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"i"];
+        [[CSMemModel sharedMemModel] pushValue:@[@{@"a[0]": kCSVariableValueUnassigned},
+         @{@"a[1]": kCSVariableValueUnassigned}, @{@"a[2]": kCSVariableValueUnassigned}, @{@"a[3]": kCSVariableValueUnassigned}] named:@"a[]"];
+        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"ap"];
+        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"ap"];
+        [[CSMemModel sharedMemModel] commitTransaction];
+    }
+}
+
 - (void)executeStep
 {
     NSIndexPath *currentIndexPath = [CSProgram sharedProgram].currentIndexPath;
@@ -300,7 +306,7 @@
     
     if (nodeFirst == 0) {
         if (nodeSecond == NSNotFound) {
-            [[CSMemModel sharedMemModel] openStackWithName:kCSStackNameMain collapseFormerVariables:NO];
+            [self pushNewStackNamed:kCSStackNameMain shouldCollapse:NO];
         }
         else if (nodeSecond <= 2) {
             [self _executeSimpleAssignmentWithNodes:nodes];

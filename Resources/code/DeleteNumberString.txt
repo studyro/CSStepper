@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+char *pro_str(char *s);
+
+void main()
+{
+	char string[15] = "I'm 23 now.";
+	
+	puts(pro_str(string));
+}
+
+char *pro_str(char *s)
+{
+	char *temp == s;
+	
+	for(; *s! = '\0')
+	{
+		if(*s >= '0' && *s <= '9')
+		{
+			strcpy(s, s+1);
+		}
+		else 
+		{
+			s++;
+		}
+	}
+	
+	return temp;
+}

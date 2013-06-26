@@ -22,7 +22,7 @@
 
 + (CGSize)sizeOfNameLabelWithName:(NSString *)name
 {
-    CGSize size = [name sizeWithFont:[UIFont systemFontOfSize:19.0]];
+    CGSize size = [name sizeWithFont:[UIFont systemFontOfSize:20.0]];
     
     return size;
 }
@@ -32,7 +32,7 @@
     if (self = [super init]) {
         CGSize labelSize = [[self class] sizeOfNameLabelWithName:name];
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, labelSize.width + 4.0, labelSize.height + 4.0)];
-        self.nameLabel.font = [UIFont systemFontOfSize:15.0];
+        self.nameLabel.font = [UIFont systemFontOfSize:20.0];
         self.nameLabel.backgroundColor = [UIColor blackColor];
         self.nameLabel.textColor = [UIColor whiteColor];
         self.nameLabel.text = name;
@@ -112,7 +112,8 @@
     }
     
     if (shouldReutrn == NO) {
-        textField.text = @"";
+        textField.text = @"非法输入";
+        [textField selectAll:nil];
     }
     else {
         [self.textField resignFirstResponder];

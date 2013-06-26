@@ -45,13 +45,15 @@
 @property (strong, nonatomic) NSMutableArray *strBlockViews;
 
 @property (strong, nonatomic) CSBlockView *highlightCircleView;
-@property (strong, nonatomic) CSBlockView *tBlockView;
-@property (strong, nonatomic) CSArrowView *tArrowView;
 
 @property (strong, nonatomic) CSConsoleView *consoleView;
 
 @property (strong, nonatomic) CSBlockView *iBlock;
 @property (strong, nonatomic) CSBlockView *jBlock;
+
+@property (strong, nonatomic) CSBlockView *vBlock;
+@property (strong, nonatomic) UILabel *vLabel;
+@property (strong, nonatomic) CSArrowView *vArrowView;
 
 @end
 
@@ -96,7 +98,7 @@
         label.center = CGPointMake(blockView.center.x, blockView.frame.origin.y + blockView.frame.size.height + 0.5 * PTR_LABEL_HEIGHT + 10.0);
         label.bounds = CGRectMake(0.0, 0.0, blockView.bounds.size.width, PTR_LABEL_HEIGHT);
         label.font = [UIFont systemFontOfSize:16.0];
-        label.text = [NSString stringWithFormat:@"pstr[%u]", i];
+        label.text = [NSString stringWithFormat:@"proname[%u]", i];
         label.opaque = NO, label.alpha = 0.0;
         label.backgroundColor = [UIColor clearColor];
         
@@ -119,17 +121,7 @@
     self.highlightCircleView.opaque = NO;
     self.highlightCircleView.alpha = 0.0;
     [self.backgroundView addSubview:self.highlightCircleView];
-    /*
-    self.tBlockView = [[CSBlockView alloc] init];
-    self.tBlockView.bounds = CGRectMake(0.0, 0.0, T_BLOCK_WIDTH, T_BLOCK_HEIGHT);
-    self.tBlockView.opaque = NO;
-    self.tBlockView.alpha = 0.0;
-    self.tBlockView.text = @"t";
-    self.tArrowView = [[CSArrowView alloc] init];
-    self.tArrowView.hidden = YES;
-    [self.backgroundView addSubview:self.tBlockView];
-    [self.backgroundView addSubview:self.tArrowView];
-    */
+
     self.consoleView = [[CSConsoleView alloc] initWithFrame:CGRectMake(310.0, 525.0, 412.0, 183.0)];
     self.consoleView.opaque = NO;
     self.consoleView.alpha = 0.0;
@@ -148,6 +140,21 @@
     self.jBlock.opaque = NO;
     self.jBlock.alpha = 0.0;
     [self.backgroundView addSubview:self.jBlock];
+    
+    self.vBlock = [[CSBlockView alloc] initWithFrame:CGRectMake(148.0, 163.0, 65.0, BLOCKS_HEIGHT)];
+    self.vBlock.opaque = NO, self.vBlock.alpha = 0.0;
+    [self.backgroundView addSubview:self.vBlock];
+    
+    self.vLabel = [[UILabel alloc] initWithFrame:CGRectMake(128.0, self.vBlock.frame.origin.y + self.vBlock.frame.size.height + 4.0, 115.0, 25.0)];
+    self.vLabel.backgroundColor = [UIColor clearColor];
+    self.vLabel.text = @"v";
+    self.vLabel.textAlignment = NSTextAlignmentCenter;
+    self.vLabel.opaque = NO, self.vLabel.alpha = 0.0;
+    [self.backgroundView addSubview:self.vLabel];
+    
+    self.vArrowView = [[CSArrowView alloc] initFromPoint:CGPointMake(self.vBlock.frame.origin.x + self.vBlock.frame.size.width, self.vBlock.center.y) toPoint:CGPointMake(255.0, self.vBlock.center.y)];
+    self.vArrowView.opaque = NO, self.vArrowView.alpha = 0.0;
+    [self.backgroundView addSubview:self.vArrowView];
 }
 
 - (void)highlightCircleStringAtIndex:(NSUInteger)stringIndex
@@ -262,6 +269,15 @@
     }];
 }
 
+- (void)showVBlockAndArrows
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.vArrowView.alpha = 1.0;
+        self.vBlock.alpha = 1.0;
+        self.vLabel.alpha = 1.0;
+    }];
+}
+
 - (void)showTBlockPointingToIndex:(NSUInteger)index
 {
     if (index >= self.number) return;
@@ -295,16 +311,6 @@
         blockView.frame = CGRectMake(I_BLOCK_START_X, cvb.frame.origin.y, CGRectGetWidth(blockView.frame), CGRectGetHeight(blockView.frame));
     } completion:^(BOOL finished){
         blockView.text = text;
-    }];
-}
-
-- (void)dismissTBlock
-{
-    if (self.tBlockView.alpha == 0.0) return;
-    
-    [UIView animateWithDuration:0.5 animations:^ {
-        self.tBlockView.alpha = 0.0;
-        self.tArrowView.hidden = YES;
     }];
 }
 
@@ -343,8 +349,8 @@
     NSUInteger nodeSecond = childNodes[1];
     
     if (nodeSecond == 0) {
-        [[CSMemModel sharedMemModel] pushValue:[self langStackValuesWithPrefix:@"proname"]
-                                         named:@"proname"];
+        [[CSMemModel sharedMemModel] setValueInStack:[self langStackValuesWithPrefix:@"proname"]
+                                               named:@"proname"];
         
         [UIView animateWithDuration:1.0 animations:^{
             for (NSUInteger i = 0; i < self.number; i++) {
@@ -363,9 +369,6 @@
             }
         }];
     }
-    else if (nodeSecond == 1) {
-        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"i"];
-    }
 }
 
 - (void)_executePrintfWithChildNodes:(NSUInteger *)childNodes
@@ -380,12 +383,12 @@
             self.consoleView.alpha = 1.0;
         }];
         
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [self setBackgroundViewGesturesEnable:NO];
         [self nextBatchStepsOfCount:self.number * 2 - 1 timeInterval:1.5 stepBlock:^(NSUInteger currentStep){
             [self nextStep];
         } completionBlock:^{
             _isBatchExecuting = NO;
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            [self setBackgroundViewGesturesEnable:YES];
         }];
     }
     
@@ -404,34 +407,14 @@
 
 - (void)_executeStepInSortStrWithChildNodes:(NSUInteger *)childNodes
 {
-    [[CSMemModel sharedMemModel] beginTransaction];
-    [[CSMemModel sharedMemModel] openStackWithName:@"SortStr" collapseFormerVariables:YES];
-    [[CSMemModel sharedMemModel] pushValue:[self langStackValuesWithPrefix:@"v"]
-                                     named:@"v"];
-    
-    [[CSMemModel sharedMemModel] pushValue:@"5"
-                                     named:@"n"];
-    [[CSMemModel sharedMemModel] commitTransaction];
-}
-
-- (void)_executeSimpleAssignInSortstrWithChildNodes:(NSUInteger *)childNodes
-{
-    NSUInteger nodeSecond = childNodes[1];
-    
-    if (nodeSecond == 0) {
-        [[CSMemModel sharedMemModel] beginTransaction];
-        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"i"];
-        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"j"];
-        [[CSMemModel sharedMemModel] commitTransaction];
-    }
-    else if (nodeSecond == 1) {
-        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"temp"];
-    }
+    [self pushNewStackNamed:@"sortstr" shouldCollapse:YES];
+    [self showVBlockAndArrows];
+    [self presentPushingNewStackFromVariableName:@"proname" toParameterName:@"v"];
 }
 
 - (void)_executeStringComparing
 {
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    [self setBackgroundViewGesturesEnable:NO];
     [self fadeStringBlockViewExceptForIndex:_countI andIndex:_countJ];
     self.backgroundView.backgroundColor = [UIColor lightGrayColor];
     [self nextBatchStepsOfCount:[self stepCountOfString:self.langArray[_countI]
@@ -446,7 +429,7 @@
                 completionBlock:^{
                     [self recoverStringBlockViewsAlpha];
                     self.backgroundView.backgroundColor = [UIColor whiteColor];
-                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                    [self setBackgroundViewGesturesEnable:YES];
                 }];
 }
 
@@ -521,6 +504,27 @@
 
 #pragma mark - Public Interfaces
 
+- (void)pushNewStackNamed:(NSString *)stackName shouldCollapse:(BOOL)shouldCollapse
+{
+    [[CSMemModel sharedMemModel] openStackWithName:kCSStackNameMain collapseFormerVariables:shouldCollapse];
+    if ([stackName isEqualToString:kCSStackNameMain]) {
+        [[CSMemModel sharedMemModel] beginTransaction];
+        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"proname"];
+        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"i"];
+        [[CSMemModel sharedMemModel] commitTransaction];
+    }
+    else if ([stackName isEqualToString:@"sortstr"]) {
+        [[CSMemModel sharedMemModel] beginTransaction];
+        [[CSMemModel sharedMemModel] pushValue:[self langStackValuesWithPrefix:@"v"]
+                                         named:@"v"];
+        [[CSMemModel sharedMemModel] pushValue:@"5"
+                                         named:@"n"];
+        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"i"];
+        [[CSMemModel sharedMemModel] pushValue:kCSVariableValueUnassigned named:@"j"];
+        [[CSMemModel sharedMemModel] commitTransaction];
+    }
+}
+
 - (void)executeStep
 {
     NSIndexPath *currentIndexPath = [CSProgram sharedProgram].currentIndexPath;
@@ -533,7 +537,10 @@
     NSUInteger childNodes[] = {nodeFirst, nodeSecond, nodeThird, nodeForth, nodeFifth};
     
     if (nodeFirst == 1) {
-        if (nodeSecond <= 1) {
+        if (nodeSecond == NSNotFound) {
+            [self pushNewStackNamed:kCSStackNameMain shouldCollapse:NO];
+        }
+        else if (nodeSecond <= 1) {
             [self _executeSimpleAssignInMainWithChildNodes:childNodes];
         }
         else if (nodeSecond == 2) {
@@ -550,9 +557,6 @@
     else if (nodeFirst == 2) {
         if (nodeSecond == NSNotFound) {
             [self _executeStepInSortStrWithChildNodes:childNodes];
-        }
-        else if (nodeSecond <= 1) {
-            [self _executeSimpleAssignInSortstrWithChildNodes:childNodes];
         }
         else if (nodeSecond == 2) {
             [self _executeILoopWithChildNodes:childNodes];
@@ -576,7 +580,6 @@
         if (nodeFirst == 1) {
             if (nodeSecond == NSNotFound) {
                 // main
-                [[CSMemModel sharedMemModel] openStackWithName:kCSStackNameMain collapseFormerVariables:NO];
                 loopCount = 0;
             }
             else if (nodeSecond == 2) {

@@ -14,7 +14,6 @@
 		1C0E700B17154EB6008FA655 /* CSCharPointerArrayInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E700A17154EB6008FA655 /* CSCharPointerArrayInterface.m */; };
 		1C0E700D17155213008FA655 /* CharPointerArray.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C0E700C17155213008FA655 /* CharPointerArray.txt */; };
 		1C0E70131715847A008FA655 /* CSConsoleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0E70121715847A008FA655 /* CSConsoleView.m */; };
-		1C10730217182F1B00CDC0A5 /* CSCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C10730117182F1B00CDC0A5 /* CSCommentView.m */; };
 		1C1073051718349400CDC0A5 /* CSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1073041718349400CDC0A5 /* CSUtils.m */; };
 		1C1073081719210100CDC0A5 /* CSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1073071719210100CDC0A5 /* CSCollectionViewController.m */; };
 		1C10730A171BBA0600CDC0A5 /* StringSort.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C107309171BBA0600CDC0A5 /* StringSort.txt */; };
@@ -27,11 +26,19 @@
 		1C1369BA17114BC6001766C4 /* CSMemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1369B917114BC6001766C4 /* CSMemModel.m */; };
 		1C1369BD1711B763001766C4 /* CSStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1369BC1711B763001766C4 /* CSStack.m */; };
 		1C1369C11711BFB4001766C4 /* PZHNExpandableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1369C01711BFB4001766C4 /* PZHNExpandableTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1C180E81175303130030C317 /* MinValueFirst.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C180E80175303130030C317 /* MinValueFirst.txt */; };
+		1C180E85175303340030C317 /* CSMinValueFirstInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C180E84175303340030C317 /* CSMinValueFirstInterface.m */; };
+		1C180E88175374200030C317 /* CSMaxStringInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C180E871753741F0030C317 /* CSMaxStringInterface.m */; };
+		1C180E8A175375050030C317 /* MaxString.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C180E89175375050030C317 /* MaxString.txt */; };
+		1C180E8C17547E240030C317 /* LifeScope.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C180E8B17547E240030C317 /* LifeScope.txt */; };
+		1C180E9017547E450030C317 /* CSLifeScopeInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C180E8F17547E450030C317 /* CSLifeScopeInterface.m */; };
+		1C180E9417550DD20030C317 /* CSConvenientAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C180E9317550DD20030C317 /* CSConvenientAnimation.m */; };
+		1C226C3A1763242200D87A96 /* CSCharLengthInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C226C391763242200D87A96 /* CSCharLengthInterface.m */; };
+		1C226C3C1763244600D87A96 /* CharLength.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C226C3B1763244600D87A96 /* CharLength.txt */; };
 		1C26562716D1E636006937C5 /* CSCodeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562416D1E636006937C5 /* CSCodeParser.m */; };
 		1C26562816D1E636006937C5 /* CSSnippet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562616D1E636006937C5 /* CSSnippet.m */; };
 		1C26562B16D1E81E006937C5 /* CSCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562A16D1E81E006937C5 /* CSCodeView.m */; };
 		1C26562E16D20892006937C5 /* CSBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562D16D20892006937C5 /* CSBlockView.m */; };
-		1C26563216D24899006937C5 /* UIColor+CSColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26563116D24899006937C5 /* UIColor+CSColor.m */; };
 		1C26563516D24C74006937C5 /* CSArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26563416D24C74006937C5 /* CSArrowView.m */; };
 		1C6447BB16C7DA3000654781 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BA16C7DA3000654781 /* UIKit.framework */; };
 		1C6447BD16C7DA3000654781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BC16C7DA3000654781 /* Foundation.framework */; };
@@ -50,6 +57,12 @@
 		1C8996F61744D20400975237 /* CSTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8996F51744D20300975237 /* CSTipView.m */; };
 		1C8996F8174513B000975237 /* MultiLevelPointer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C8996F7174513B000975237 /* MultiLevelPointer.txt */; };
 		1C8996FB174513CF00975237 /* CSMultiLevelPointerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8996FA174513CF00975237 /* CSMultiLevelPointerInterface.m */; };
+		1C8996FE17464BA200975237 /* DeleteNumberString.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C8996FD17464BA200975237 /* DeleteNumberString.txt */; };
+		1C89970117464BBA00975237 /* CSDeleteNumberStringInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C89970017464BB900975237 /* CSDeleteNumberStringInterface.m */; };
+		1C8997041746881900975237 /* CSAnphasizeHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8997031746881700975237 /* CSAnphasizeHUD.m */; };
+		1C8997071747514A00975237 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8997061747514A00975237 /* UIColor+FlatUI.m */; };
+		1C89970917489F6800975237 /* StructElection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C89970817489F6600975237 /* StructElection.txt */; };
+		1C89970D1748A0D300975237 /* CSStructElectionInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C89970C1748A0D300975237 /* CSStructElectionInterface.m */; };
 		1CDC7A7F16E1BA4000BFC269 /* CSStepperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */; };
 		1CDC7A8116E1BBD500BFC269 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDC7A8016E1BBD400BFC269 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -65,8 +78,6 @@
 		1C0E700C17155213008FA655 /* CharPointerArray.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CharPointerArray.txt; path = Resources/code/CharPointerArray.txt; sourceTree = "<group>"; };
 		1C0E70111715847A008FA655 /* CSConsoleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSConsoleView.h; path = CSKit/CommonViews/CSConsoleView.h; sourceTree = "<group>"; };
 		1C0E70121715847A008FA655 /* CSConsoleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSConsoleView.m; path = CSKit/CommonViews/CSConsoleView.m; sourceTree = "<group>"; };
-		1C10730017182F1B00CDC0A5 /* CSCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCommentView.h; path = CSKit/CommonViews/CSCommentView.h; sourceTree = "<group>"; };
-		1C10730117182F1B00CDC0A5 /* CSCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCommentView.m; path = CSKit/CommonViews/CSCommentView.m; sourceTree = "<group>"; };
 		1C1073031718349400CDC0A5 /* CSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSUtils.h; path = CSKit/Utils/CSUtils.h; sourceTree = "<group>"; };
 		1C1073041718349400CDC0A5 /* CSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSUtils.m; path = CSKit/Utils/CSUtils.m; sourceTree = "<group>"; };
 		1C1073061719210100CDC0A5 /* CSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCollectionViewController.h; path = ViewController/CSCollectionViewController.h; sourceTree = "<group>"; };
@@ -90,6 +101,20 @@
 		1C1369BC1711B763001766C4 /* CSStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStack.m; path = CSKit/Model/CSStack.m; sourceTree = "<group>"; };
 		1C1369BF1711BFB4001766C4 /* PZHNExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PZHNExpandableTableView.h; path = External/PZHNExpandableTableView.h; sourceTree = "<group>"; };
 		1C1369C01711BFB4001766C4 /* PZHNExpandableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PZHNExpandableTableView.m; path = External/PZHNExpandableTableView.m; sourceTree = "<group>"; };
+		1C180E80175303130030C317 /* MinValueFirst.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MinValueFirst.txt; path = Resources/code/MinValueFirst.txt; sourceTree = "<group>"; };
+		1C180E83175303340030C317 /* CSMinValueFirstInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMinValueFirstInterface.h; path = ConcreteEgs/Chapter5/CSMinValueFirstInterface.h; sourceTree = "<group>"; };
+		1C180E84175303340030C317 /* CSMinValueFirstInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMinValueFirstInterface.m; path = ConcreteEgs/Chapter5/CSMinValueFirstInterface.m; sourceTree = "<group>"; };
+		1C180E861753741F0030C317 /* CSMaxStringInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMaxStringInterface.h; path = ConcreteEgs/Chapter7/CSMaxStringInterface.h; sourceTree = "<group>"; };
+		1C180E871753741F0030C317 /* CSMaxStringInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMaxStringInterface.m; path = ConcreteEgs/Chapter7/CSMaxStringInterface.m; sourceTree = "<group>"; };
+		1C180E89175375050030C317 /* MaxString.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MaxString.txt; path = Resources/code/MaxString.txt; sourceTree = "<group>"; };
+		1C180E8B17547E240030C317 /* LifeScope.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LifeScope.txt; path = Resources/code/LifeScope.txt; sourceTree = "<group>"; };
+		1C180E8E17547E450030C317 /* CSLifeScopeInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSLifeScopeInterface.h; path = ConcreteEgs/Chapter4/CSLifeScopeInterface.h; sourceTree = "<group>"; };
+		1C180E8F17547E450030C317 /* CSLifeScopeInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSLifeScopeInterface.m; path = ConcreteEgs/Chapter4/CSLifeScopeInterface.m; sourceTree = "<group>"; };
+		1C180E9217550DD20030C317 /* CSConvenientAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSConvenientAnimation.h; path = CSKit/Animation/CSConvenientAnimation.h; sourceTree = "<group>"; };
+		1C180E9317550DD20030C317 /* CSConvenientAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSConvenientAnimation.m; path = CSKit/Animation/CSConvenientAnimation.m; sourceTree = "<group>"; };
+		1C226C381763242200D87A96 /* CSCharLengthInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCharLengthInterface.h; path = ConcreteEgs/Chapter6/CSCharLengthInterface.h; sourceTree = "<group>"; };
+		1C226C391763242200D87A96 /* CSCharLengthInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCharLengthInterface.m; path = ConcreteEgs/Chapter6/CSCharLengthInterface.m; sourceTree = "<group>"; };
+		1C226C3B1763244600D87A96 /* CharLength.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CharLength.txt; path = Resources/code/CharLength.txt; sourceTree = "<group>"; };
 		1C26562316D1E636006937C5 /* CSCodeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSCodeParser.h; path = CSKit/ParseCore/CSCodeParser.h; sourceTree = "<group>"; };
 		1C26562416D1E636006937C5 /* CSCodeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCodeParser.m; path = CSKit/ParseCore/CSCodeParser.m; sourceTree = "<group>"; };
 		1C26562516D1E636006937C5 /* CSSnippet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSnippet.h; path = CSKit/ParseCore/CSSnippet.h; sourceTree = "<group>"; };
@@ -98,8 +123,6 @@
 		1C26562A16D1E81E006937C5 /* CSCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSCodeView.m; path = CSKit/CommonViews/CSCodeView.m; sourceTree = "<group>"; };
 		1C26562C16D20892006937C5 /* CSBlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSBlockView.h; path = CSKit/CommonViews/CSBlockView.h; sourceTree = "<group>"; };
 		1C26562D16D20892006937C5 /* CSBlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSBlockView.m; path = CSKit/CommonViews/CSBlockView.m; sourceTree = "<group>"; };
-		1C26563016D24899006937C5 /* UIColor+CSColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+CSColor.h"; path = "CSKit/Categories/UIColor+CSColor.h"; sourceTree = "<group>"; };
-		1C26563116D24899006937C5 /* UIColor+CSColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CSColor.m"; path = "CSKit/Categories/UIColor+CSColor.m"; sourceTree = "<group>"; };
 		1C26563316D24C74006937C5 /* CSArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSArrowView.h; path = CSKit/CommonViews/CSArrowView.h; sourceTree = "<group>"; };
 		1C26563416D24C74006937C5 /* CSArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSArrowView.m; path = CSKit/CommonViews/CSArrowView.m; sourceTree = "<group>"; };
 		1C6447B716C7DA3000654781 /* CSStepper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSStepper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +152,16 @@
 		1C8996F7174513B000975237 /* MultiLevelPointer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultiLevelPointer.txt; path = Resources/code/MultiLevelPointer.txt; sourceTree = "<group>"; };
 		1C8996F9174513CF00975237 /* CSMultiLevelPointerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMultiLevelPointerInterface.h; path = ConcreteEgs/Chapter6/CSMultiLevelPointerInterface.h; sourceTree = "<group>"; };
 		1C8996FA174513CF00975237 /* CSMultiLevelPointerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMultiLevelPointerInterface.m; path = ConcreteEgs/Chapter6/CSMultiLevelPointerInterface.m; sourceTree = "<group>"; };
+		1C8996FD17464BA200975237 /* DeleteNumberString.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DeleteNumberString.txt; path = Resources/code/DeleteNumberString.txt; sourceTree = "<group>"; };
+		1C8996FF17464BB800975237 /* CSDeleteNumberStringInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSDeleteNumberStringInterface.h; path = ConcreteEgs/Chapter7/CSDeleteNumberStringInterface.h; sourceTree = "<group>"; };
+		1C89970017464BB900975237 /* CSDeleteNumberStringInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSDeleteNumberStringInterface.m; path = ConcreteEgs/Chapter7/CSDeleteNumberStringInterface.m; sourceTree = "<group>"; };
+		1C8997021746881500975237 /* CSAnphasizeHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSAnphasizeHUD.h; path = CSKit/CommonViews/CSAnphasizeHUD.h; sourceTree = "<group>"; };
+		1C8997031746881700975237 /* CSAnphasizeHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSAnphasizeHUD.m; path = CSKit/CommonViews/CSAnphasizeHUD.m; sourceTree = "<group>"; };
+		1C8997051747514900975237 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		1C8997061747514A00975237 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
+		1C89970817489F6600975237 /* StructElection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = StructElection.txt; path = Resources/code/StructElection.txt; sourceTree = "<group>"; };
+		1C89970B1748A0D300975237 /* CSStructElectionInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStructElectionInterface.h; path = ConcreteEgs/Chapter8/CSStructElectionInterface.h; sourceTree = "<group>"; };
+		1C89970C1748A0D300975237 /* CSStructElectionInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStructElectionInterface.m; path = ConcreteEgs/Chapter8/CSStructElectionInterface.m; sourceTree = "<group>"; };
 		1CDC7A7D16E1BA4000BFC269 /* CSStepperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStepperViewController.h; path = ViewController/CSStepperViewController.h; sourceTree = "<group>"; };
 		1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStepperViewController.m; path = ViewController/CSStepperViewController.m; sourceTree = "<group>"; };
 		1CDC7A8016E1BBD400BFC269 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -179,6 +212,12 @@
 		1C0BAED7170A814200A3A8DD /* code */ = {
 			isa = PBXGroup;
 			children = (
+				1C226C3B1763244600D87A96 /* CharLength.txt */,
+				1C180E8B17547E240030C317 /* LifeScope.txt */,
+				1C180E89175375050030C317 /* MaxString.txt */,
+				1C180E80175303130030C317 /* MinValueFirst.txt */,
+				1C89970817489F6600975237 /* StructElection.txt */,
+				1C8996FD17464BA200975237 /* DeleteNumberString.txt */,
 				1C107309171BBA0600CDC0A5 /* StringSort.txt */,
 				1C0E700C17155213008FA655 /* CharPointerArray.txt */,
 				1C8996F7174513B000975237 /* MultiLevelPointer.txt */,
@@ -195,6 +234,10 @@
 				1C10730C171BBA2600CDC0A5 /* CSStringSortInterface.m */,
 				1C8996EE1744B91C00975237 /* CSArrayPointerInterface.h */,
 				1C8996EF1744B91C00975237 /* CSArrayPointerInterface.m */,
+				1C8996FF17464BB800975237 /* CSDeleteNumberStringInterface.h */,
+				1C89970017464BB900975237 /* CSDeleteNumberStringInterface.m */,
+				1C180E861753741F0030C317 /* CSMaxStringInterface.h */,
+				1C180E871753741F0030C317 /* CSMaxStringInterface.m */,
 			);
 			name = Chapter7;
 			sourceTree = "<group>";
@@ -206,6 +249,8 @@
 				1C0E700A17154EB6008FA655 /* CSCharPointerArrayInterface.m */,
 				1C8996F9174513CF00975237 /* CSMultiLevelPointerInterface.h */,
 				1C8996FA174513CF00975237 /* CSMultiLevelPointerInterface.m */,
+				1C226C381763242200D87A96 /* CSCharLengthInterface.h */,
+				1C226C391763242200D87A96 /* CSCharLengthInterface.m */,
 			);
 			name = Chapter6;
 			sourceTree = "<group>";
@@ -241,6 +286,34 @@
 			name = External;
 			sourceTree = "<group>";
 		};
+		1C180E7F175260BD0030C317 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				1C180E9217550DD20030C317 /* CSConvenientAnimation.h */,
+				1C180E9317550DD20030C317 /* CSConvenientAnimation.m */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		1C180E82175303190030C317 /* Chapter5 */ = {
+			isa = PBXGroup;
+			children = (
+				1C10930217095C9F0079D261 /* Sort */,
+				1C180E83175303340030C317 /* CSMinValueFirstInterface.h */,
+				1C180E84175303340030C317 /* CSMinValueFirstInterface.m */,
+			);
+			name = Chapter5;
+			sourceTree = "<group>";
+		};
+		1C180E8D17547E2F0030C317 /* Chapter4 */ = {
+			isa = PBXGroup;
+			children = (
+				1C180E8E17547E450030C317 /* CSLifeScopeInterface.h */,
+				1C180E8F17547E450030C317 /* CSLifeScopeInterface.m */,
+			);
+			name = Chapter4;
+			sourceTree = "<group>";
+		};
 		1C26561C16D1E5D0006937C5 /* ParseCore */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,8 +328,8 @@
 		1C26562F16D2476A006937C5 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				1C26563016D24899006937C5 /* UIColor+CSColor.h */,
-				1C26563116D24899006937C5 /* UIColor+CSColor.m */,
+				1C8997051747514900975237 /* UIColor+FlatUI.h */,
+				1C8997061747514A00975237 /* UIColor+FlatUI.m */,
 				1C107311171D3E7500CDC0A5 /* NSString+Separator.h */,
 				1C107312171D3E7500CDC0A5 /* NSString+Separator.m */,
 			);
@@ -329,6 +402,7 @@
 				1C26562F16D2476A006937C5 /* Categories */,
 				1C26561C16D1E5D0006937C5 /* ParseCore */,
 				1C6447DF16CA1CF000654781 /* CommonViews */,
+				1C180E7F175260BD0030C317 /* Animation */,
 				1C6447DC16CA186D00654781 /* CSProgram.h */,
 				1C6447DD16CA186D00654781 /* CSProgram.m */,
 				1C6447E016CA2DD900654781 /* CSInterface.h */,
@@ -340,9 +414,11 @@
 		1C6447D816C880A900654781 /* ConcreteEgs */ = {
 			isa = PBXGroup;
 			children = (
+				1C180E8D17547E2F0030C317 /* Chapter4 */,
+				1C180E82175303190030C317 /* Chapter5 */,
 				1C0E700817154E98008FA655 /* Chapter6 */,
 				1C0E700117153398008FA655 /* Chapter7 */,
-				1C10930217095C9F0079D261 /* Sort */,
+				1C89970A1748A0A100975237 /* Chapter8 */,
 			);
 			name = ConcreteEgs;
 			sourceTree = "<group>";
@@ -352,8 +428,6 @@
 			children = (
 				1C26562916D1E81E006937C5 /* CSCodeView.h */,
 				1C26562A16D1E81E006937C5 /* CSCodeView.m */,
-				1C10730017182F1B00CDC0A5 /* CSCommentView.h */,
-				1C10730117182F1B00CDC0A5 /* CSCommentView.m */,
 				1C26562C16D20892006937C5 /* CSBlockView.h */,
 				1C26562D16D20892006937C5 /* CSBlockView.m */,
 				1C26563316D24C74006937C5 /* CSArrowView.h */,
@@ -366,10 +440,21 @@
 				1C8996F21744BC4E00975237 /* CSInputView.m */,
 				1C8996F41744D20200975237 /* CSTipView.h */,
 				1C8996F51744D20300975237 /* CSTipView.m */,
+				1C8997021746881500975237 /* CSAnphasizeHUD.h */,
+				1C8997031746881700975237 /* CSAnphasizeHUD.m */,
 				1C0E700517153EDF008FA655 /* CSClusteredBlockView.h */,
 				1C0E700617153EDF008FA655 /* CSClusteredBlockView.m */,
 			);
 			name = CommonViews;
+			sourceTree = "<group>";
+		};
+		1C89970A1748A0A100975237 /* Chapter8 */ = {
+			isa = PBXGroup;
+			children = (
+				1C89970B1748A0D300975237 /* CSStructElectionInterface.h */,
+				1C89970C1748A0D300975237 /* CSStructElectionInterface.m */,
+			);
+			name = Chapter8;
 			sourceTree = "<group>";
 		};
 		1CDC7A7C16E1BA1000BFC269 /* ViewController */ = {
@@ -447,6 +532,12 @@
 				1C0E700D17155213008FA655 /* CharPointerArray.txt in Resources */,
 				1C10730A171BBA0600CDC0A5 /* StringSort.txt in Resources */,
 				1C8996F8174513B000975237 /* MultiLevelPointer.txt in Resources */,
+				1C8996FE17464BA200975237 /* DeleteNumberString.txt in Resources */,
+				1C89970917489F6800975237 /* StructElection.txt in Resources */,
+				1C180E81175303130030C317 /* MinValueFirst.txt in Resources */,
+				1C180E8A175375050030C317 /* MaxString.txt in Resources */,
+				1C180E8C17547E240030C317 /* LifeScope.txt in Resources */,
+				1C226C3C1763244600D87A96 /* CharLength.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +556,6 @@
 				1C26562816D1E636006937C5 /* CSSnippet.m in Sources */,
 				1C26562B16D1E81E006937C5 /* CSCodeView.m in Sources */,
 				1C26562E16D20892006937C5 /* CSBlockView.m in Sources */,
-				1C26563216D24899006937C5 /* UIColor+CSColor.m in Sources */,
 				1C26563516D24C74006937C5 /* CSArrowView.m in Sources */,
 				1CDC7A7F16E1BA4000BFC269 /* CSStepperViewController.m in Sources */,
 				1C10930817095DBE0079D261 /* CSSortInterface.m in Sources */,
@@ -478,7 +568,6 @@
 				1C0E700717153EDF008FA655 /* CSClusteredBlockView.m in Sources */,
 				1C0E700B17154EB6008FA655 /* CSCharPointerArrayInterface.m in Sources */,
 				1C0E70131715847A008FA655 /* CSConsoleView.m in Sources */,
-				1C10730217182F1B00CDC0A5 /* CSCommentView.m in Sources */,
 				1C1073051718349400CDC0A5 /* CSUtils.m in Sources */,
 				1C1073081719210100CDC0A5 /* CSCollectionViewController.m in Sources */,
 				1C10730D171BBA2600CDC0A5 /* CSStringSortInterface.m in Sources */,
@@ -487,6 +576,15 @@
 				1C8996F31744BC4F00975237 /* CSInputView.m in Sources */,
 				1C8996F61744D20400975237 /* CSTipView.m in Sources */,
 				1C8996FB174513CF00975237 /* CSMultiLevelPointerInterface.m in Sources */,
+				1C89970117464BBA00975237 /* CSDeleteNumberStringInterface.m in Sources */,
+				1C8997041746881900975237 /* CSAnphasizeHUD.m in Sources */,
+				1C8997071747514A00975237 /* UIColor+FlatUI.m in Sources */,
+				1C89970D1748A0D300975237 /* CSStructElectionInterface.m in Sources */,
+				1C180E85175303340030C317 /* CSMinValueFirstInterface.m in Sources */,
+				1C180E88175374200030C317 /* CSMaxStringInterface.m in Sources */,
+				1C180E9017547E450030C317 /* CSLifeScopeInterface.m in Sources */,
+				1C180E9417550DD20030C317 /* CSConvenientAnimation.m in Sources */,
+				1C226C3A1763242200D87A96 /* CSCharLengthInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +613,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gong Yan (L7X4FYWPEE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -530,6 +629,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "1A852C26-8809-4A72-85A2-7D6722957C9A";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -546,6 +646,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gong Yan (L7X4FYWPEE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -554,6 +655,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "1A852C26-8809-4A72-85A2-7D6722957C9A";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -569,7 +671,7 @@
 				GCC_PREFIX_HEADER = "CSStepper/CSStepper-Prefix.pch";
 				INFOPLIST_FILE = "CSStepper/CSStepper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C83D19AF-4017-4A4A-AF96-F897BF4E9374";
+				PROVISIONING_PROFILE = "1A852C26-8809-4A72-85A2-7D6722957C9A";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -584,7 +686,7 @@
 				GCC_PREFIX_HEADER = "CSStepper/CSStepper-Prefix.pch";
 				INFOPLIST_FILE = "CSStepper/CSStepper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C83D19AF-4017-4A4A-AF96-F897BF4E9374";
+				PROVISIONING_PROFILE = "1A852C26-8809-4A72-85A2-7D6722957C9A";
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};

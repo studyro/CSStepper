@@ -7,6 +7,7 @@
 //
 
 #import "CSConsoleView.h"
+#import "CSConvenientAnimation.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface CSConsoleView ()
@@ -56,6 +57,9 @@
 {
     [self.mutableString appendString:string];
     self.consoleLabel.text = self.mutableString;
+    [CSConvenientAnimation applyAnphasizeAnimationToView:self
+                                                   scale:1.15
+                                                duration:0.45];
 }
 
 @end

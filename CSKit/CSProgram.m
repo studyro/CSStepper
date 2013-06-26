@@ -26,6 +26,8 @@
 @property (strong, nonatomic, readwrite) NSIndexPath *nextIndexPath;
 @property (strong, nonatomic, readonly) CSSnippet *nextSnippet;
 
+@property (strong, nonatomic) NSIndexPath *indexPathToSkip;
+
 @end
 
 @implementation CSProgram
@@ -53,6 +55,15 @@
     [_codeView setText:self.codeText configureWithBlock:nil];
 }
 
+- (void)_clearCurrentStatus
+{
+    [self.scopeStack removeAllObjects];
+    [self.executedSnippetStack removeAllObjects];
+    self.currentIndexPath = nil;
+    self.currentLoopInfo = nil;
+    self.indexPathToSkip = nil;
+}
+
 - (void)reloadProgram:(kCSProgramCase *)aCase
                 error:(NSError *__autoreleasing *)error
 {
@@ -64,6 +75,8 @@
     CSCodeParser *parser = [[CSCodeParser alloc] init];
     self.snippetsArray = [parser snippetsArrayByString:self.codeText];
     self.mainIndexPath = [CSUtils mainIndexPathWithCase:aCase];
+    
+    [self _clearCurrentStatus];
 }
 
 - (CSSnippet *)nextSnippet
@@ -98,7 +111,7 @@
     return tempSnippet;
 }
 
-- (NSIndexPath *)_seriallyNextIndexPathAfterIndexPath:(NSIndexPath *)indexPath
+- (NSIndexPath *)_seriallyNextIndexPathAfterIndexPath:(NSIndexPath *)indexPath shouldSkipping:(BOOL)shouldSkipping
 {
     if (!indexPath) return nil;
     
@@ -108,7 +121,15 @@
     
     indices[length - 1]++;
     
-    return [NSIndexPath indexPathWithIndexes:indices length:length];
+    NSIndexPath *nextIndexPath = [NSIndexPath indexPathWithIndexes:indices length:length];
+    
+    if (shouldSkipping && self.indexPathToSkip && [self.indexPathToSkip compare:nextIndexPath] == NSOrderedSame) {
+        indices[length - 1]++;
+        nextIndexPath = [NSIndexPath indexPathWithIndexes:indices length:length];
+        self.indexPathToSkip = nil;
+    }
+    
+    return nextIndexPath;
 }
 
 - (NSIndexPath *)_firstChildIndexPath
@@ -185,6 +206,19 @@
     self.nextIndexPath = indexPath;
 }
 
+- (void)skipNextSeriallyLineOfCode
+{
+    self.indexPathToSkip = [self _seriallyNextIndexPathAfterIndexPath:self.currentIndexPath shouldSkipping:NO];
+}
+
+- (void)breakCurrentScopeInverselyAtIndex:(NSUInteger)idx
+{
+    if (idx > self.scopeStack.count - 1) {
+        return;
+    }
+    [self.scopeStack removeObjectAtIndex:self.scopeStack.count - 1 - idx];
+}
+
 - (BOOL)isAtTheLoopBeginning
 {
     if (_finished == NO)
@@ -225,34 +259,35 @@
     }
     else {
         // self.currentLoopInfo = nil means we're in a current scope.
-        
         if ([self.scopeStack count] == 0) {
             _finished = YES;
             self.nextIndexPath = nil;
             return;
         }
         
-        NSIndexPath *nextSiblingIndexPath = [self _seriallyNextIndexPathAfterIndexPath:indexPath];
+        NSIndexPath *nextSiblingIndexPath = [self _seriallyNextIndexPathAfterIndexPath:indexPath shouldSkipping:YES];
         CSSnippet *nextSiblingSnippet = [self _snippetAtIndexPath:nextSiblingIndexPath];
         
-        if (nextSiblingSnippet && !_finished)
-            self.nextIndexPath = nextSiblingIndexPath;
-        else if (!nextSiblingSnippet) {
-            // if nextSiblingSnippet is nil, we've got the edge of current scope.
-            
-            NSDictionary *loopInfo = [self.scopeStack lastObject];
-            NSInteger totalCount = [loopInfo[@"total"] integerValue];
-            NSIndexPath *parentIndexPath = loopInfo[@"indexPath"];
-            [self.scopeStack removeLastObject];
-            
-            if (totalCount == 0) {
-                // for `if` case, nextIndexPath is based on next recursion result on parentIndexPath
-                [self _analyzeCurrentContextBeginingWithIndexPath:parentIndexPath];
-            }
-            else if (totalCount > 0) {
-                // for loop case, nextIndexPath is parentIndexPath
-                self.nextIndexPath = parentIndexPath;
-                self.currentLoopInfo = loopInfo;
+        if (!_finished) {
+            if (nextSiblingSnippet && indexPath.length != 1)
+                self.nextIndexPath = nextSiblingIndexPath;
+            else {
+                // if nextSiblingSnippet is nil, we've got the edge of current scope.
+                
+                NSDictionary *loopInfo = [self.scopeStack lastObject];
+                NSInteger totalCount = [loopInfo[@"total"] integerValue];
+                NSIndexPath *parentIndexPath = loopInfo[@"indexPath"];
+                [self.scopeStack removeLastObject];
+                
+                if (totalCount == 0) {
+                    // for `if` case, nextIndexPath is based on next recursion result on parentIndexPath
+                    [self _analyzeCurrentContextBeginingWithIndexPath:parentIndexPath];
+                }
+                else if (totalCount > 0) {
+                    // for loop case, nextIndexPath is parentIndexPath
+                    self.nextIndexPath = parentIndexPath;
+                    self.currentLoopInfo = loopInfo;
+                }
             }
         }
     }
@@ -278,11 +313,6 @@
     }
     
     return NO;
-}
-
-- (void)lastStep
-{
-    
 }
 
 - (BOOL)hasChildrenOfCodeAtIndexPath:(NSIndexPath *)indexPath
