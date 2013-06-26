@@ -25,7 +25,7 @@ extern NSString *const kCSVariableValueUnassigned;
 
 - (void)commitTransaction;
 
-#pragma mark - Stack-relasted APIs
+#pragma mark - Stack-related APIs
 
 - (void)openStackWithName:(NSString *)name
   collapseFormerVariables:(BOOL)shouldCollapse;

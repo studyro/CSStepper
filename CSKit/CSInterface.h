@@ -37,21 +37,19 @@
 
 - (void)presentPushingNewStackFromVariableName:(NSString *)fromName toParameterName:(NSString *)toName;
 
-#warning not availabel yet
-- (NSArray *)indexPathsToSkip;
 #pragma mark - Execution Flow Control Methods
 // this method should be called after backgroundView is accepted.
 - (void)construct;
-
+// 这个方法应该在每个例子中重写，这个方法将在例子执行每步之前被自动调用，方法中应该根据当前执行到的索引路径并对照例子代码的原文来确定beginNewScope的参数。
 - (void)tryToBeginNewScope;
-
+// 这个方法应该在每个例子中重写，这个方法将在高亮下一行代码之后执行，重写时应该针对当前执行到的索引路径实现相应的动画变化。
 - (void)executeStep;
-
+// 本方法可以本重写，重写最后要调用父类的本方法[super highlightNextLine]。
 - (BOOL)highlightNextLine;
 
 - (void)nextStep;
 
-// parameter of stepBlock starts from 1, end to {#stepCount}
+// a timer executor. Parameter of stepBlock starts from 1, end to {#stepCount}
 - (void)nextBatchStepsOfCount:(NSUInteger)stepCount
                  timeInterval:(NSTimeInterval)timeInterval
                     stepBlock:(void (^)(NSUInteger currentStep))stepBlock

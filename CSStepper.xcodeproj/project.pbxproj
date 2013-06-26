@@ -40,6 +40,7 @@
 		1C26562B16D1E81E006937C5 /* CSCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562A16D1E81E006937C5 /* CSCodeView.m */; };
 		1C26562E16D20892006937C5 /* CSBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26562D16D20892006937C5 /* CSBlockView.m */; };
 		1C26563516D24C74006937C5 /* CSArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C26563416D24C74006937C5 /* CSArrowView.m */; };
+		1C306290177A7D4900D1EB27 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C30628F177A7D4900D1EB27 /* UIColor+FlatUI.m */; };
 		1C6447BB16C7DA3000654781 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BA16C7DA3000654781 /* UIKit.framework */; };
 		1C6447BD16C7DA3000654781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BC16C7DA3000654781 /* Foundation.framework */; };
 		1C6447BF16C7DA3000654781 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6447BE16C7DA3000654781 /* CoreGraphics.framework */; };
@@ -60,7 +61,6 @@
 		1C8996FE17464BA200975237 /* DeleteNumberString.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C8996FD17464BA200975237 /* DeleteNumberString.txt */; };
 		1C89970117464BBA00975237 /* CSDeleteNumberStringInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C89970017464BB900975237 /* CSDeleteNumberStringInterface.m */; };
 		1C8997041746881900975237 /* CSAnphasizeHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8997031746881700975237 /* CSAnphasizeHUD.m */; };
-		1C8997071747514A00975237 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8997061747514A00975237 /* UIColor+FlatUI.m */; };
 		1C89970917489F6800975237 /* StructElection.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1C89970817489F6600975237 /* StructElection.txt */; };
 		1C89970D1748A0D300975237 /* CSStructElectionInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C89970C1748A0D300975237 /* CSStructElectionInterface.m */; };
 		1CDC7A7F16E1BA4000BFC269 /* CSStepperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDC7A7E16E1BA4000BFC269 /* CSStepperViewController.m */; };
@@ -125,6 +125,8 @@
 		1C26562D16D20892006937C5 /* CSBlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSBlockView.m; path = CSKit/CommonViews/CSBlockView.m; sourceTree = "<group>"; };
 		1C26563316D24C74006937C5 /* CSArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSArrowView.h; path = CSKit/CommonViews/CSArrowView.h; sourceTree = "<group>"; };
 		1C26563416D24C74006937C5 /* CSArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSArrowView.m; path = CSKit/CommonViews/CSArrowView.m; sourceTree = "<group>"; };
+		1C30628E177A7D4900D1EB27 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+FlatUI.h"; path = "CSKit/Categories/UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		1C30628F177A7D4900D1EB27 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+FlatUI.m"; path = "CSKit/Categories/UIColor+FlatUI.m"; sourceTree = "<group>"; };
 		1C6447B716C7DA3000654781 /* CSStepper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSStepper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C6447BA16C7DA3000654781 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1C6447BC16C7DA3000654781 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -157,8 +159,6 @@
 		1C89970017464BB900975237 /* CSDeleteNumberStringInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSDeleteNumberStringInterface.m; path = ConcreteEgs/Chapter7/CSDeleteNumberStringInterface.m; sourceTree = "<group>"; };
 		1C8997021746881500975237 /* CSAnphasizeHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSAnphasizeHUD.h; path = CSKit/CommonViews/CSAnphasizeHUD.h; sourceTree = "<group>"; };
 		1C8997031746881700975237 /* CSAnphasizeHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSAnphasizeHUD.m; path = CSKit/CommonViews/CSAnphasizeHUD.m; sourceTree = "<group>"; };
-		1C8997051747514900975237 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
-		1C8997061747514A00975237 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
 		1C89970817489F6600975237 /* StructElection.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = StructElection.txt; path = Resources/code/StructElection.txt; sourceTree = "<group>"; };
 		1C89970B1748A0D300975237 /* CSStructElectionInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSStructElectionInterface.h; path = ConcreteEgs/Chapter8/CSStructElectionInterface.h; sourceTree = "<group>"; };
 		1C89970C1748A0D300975237 /* CSStructElectionInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSStructElectionInterface.m; path = ConcreteEgs/Chapter8/CSStructElectionInterface.m; sourceTree = "<group>"; };
@@ -328,10 +328,10 @@
 		1C26562F16D2476A006937C5 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				1C8997051747514900975237 /* UIColor+FlatUI.h */,
-				1C8997061747514A00975237 /* UIColor+FlatUI.m */,
 				1C107311171D3E7500CDC0A5 /* NSString+Separator.h */,
 				1C107312171D3E7500CDC0A5 /* NSString+Separator.m */,
+				1C30628E177A7D4900D1EB27 /* UIColor+FlatUI.h */,
+				1C30628F177A7D4900D1EB27 /* UIColor+FlatUI.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -578,13 +578,13 @@
 				1C8996FB174513CF00975237 /* CSMultiLevelPointerInterface.m in Sources */,
 				1C89970117464BBA00975237 /* CSDeleteNumberStringInterface.m in Sources */,
 				1C8997041746881900975237 /* CSAnphasizeHUD.m in Sources */,
-				1C8997071747514A00975237 /* UIColor+FlatUI.m in Sources */,
 				1C89970D1748A0D300975237 /* CSStructElectionInterface.m in Sources */,
 				1C180E85175303340030C317 /* CSMinValueFirstInterface.m in Sources */,
 				1C180E88175374200030C317 /* CSMaxStringInterface.m in Sources */,
 				1C180E9017547E450030C317 /* CSLifeScopeInterface.m in Sources */,
 				1C180E9417550DD20030C317 /* CSConvenientAnimation.m in Sources */,
 				1C226C3A1763242200D87A96 /* CSCharLengthInterface.m in Sources */,
+				1C306290177A7D4900D1EB27 /* UIColor+FlatUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

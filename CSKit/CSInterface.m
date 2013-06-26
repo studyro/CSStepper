@@ -154,12 +154,6 @@
     }];
 }
 
-- (NSArray *)indexPathsToSkip
-{
-    // should be implemented by subclasses
-    return nil;
-}
-
 #pragma mark - Execution Flow Control Methods
 
 - (void)tryToBeginNewScope

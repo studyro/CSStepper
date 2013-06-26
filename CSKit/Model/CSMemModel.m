@@ -118,6 +118,7 @@ NSString *const kCSVariableValueUnassigned = @"kCSVariableValueUnassigned";
         }];
     }
     
+    // 检查标志位，只有当不再transaction上下文中时才发出更改内存模型的通知。
     if (!_inTransaction)
         [[NSNotificationCenter defaultCenter] postNotificationName:CSMemModelDidChangedNotification object:self userInfo:@{@"type": @"stack"}];
 }

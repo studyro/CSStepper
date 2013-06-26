@@ -27,6 +27,7 @@ extern NSString *const kCSProgramCaseLifeScope;
 
 + (CSInterface *)interfaceWithCase:(kCSProgramCase *)caseString;
 
+// 根据传入参数给出main函数的索引路径
 + (NSIndexPath *)mainIndexPathWithCase:(kCSProgramCase *)caseString;
 
 @end

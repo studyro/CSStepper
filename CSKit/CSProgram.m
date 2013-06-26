@@ -111,6 +111,10 @@
     return tempSnippet;
 }
 
+/*
+ * 返回以参数indexPath索引路径微标准的统计索引级别下的下一个节点。
+ * @shouldSkipping : 是否应该跳过下一个节点。
+ */
 - (NSIndexPath *)_seriallyNextIndexPathAfterIndexPath:(NSIndexPath *)indexPath shouldSkipping:(BOOL)shouldSkipping
 {
     if (!indexPath) return nil;
@@ -280,11 +284,11 @@
                 [self.scopeStack removeLastObject];
                 
                 if (totalCount == 0) {
-                    // for `if` case, nextIndexPath is based on next recursion result on parentIndexPath
+                    // 对于if或者else的情况来说，结束当前作用域后要高亮的是父节点为准的下一个节点，递归使用这套规则判断。
                     [self _analyzeCurrentContextBeginingWithIndexPath:parentIndexPath];
                 }
                 else if (totalCount > 0) {
-                    // for loop case, nextIndexPath is parentIndexPath
+                    // 对于循环的情况来说，结束当前作用域后需要高亮的是它的父节点(因为要检查循环次数)
                     self.nextIndexPath = parentIndexPath;
                     self.currentLoopInfo = loopInfo;
                 }
@@ -295,14 +299,13 @@
 
 - (BOOL)nextStep
 {
-    // check if self.nextSnippet has been assigned by beginNewScope...
     if (_finished) {
         // EOF
         return NO;
     }
     
     if (self.nextSnippet == nil) {
-        // get a correct nextIndexPath and nextSnippet
+        // 如果下一行高亮的代码没有被指定(可以被beginNewScope..指定)，进入分析方法中获得它。
         [self _analyzeCurrentContextBeginingWithIndexPath:self.currentIndexPath];
     }
     
